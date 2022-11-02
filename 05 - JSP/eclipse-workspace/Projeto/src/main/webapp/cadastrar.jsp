@@ -11,18 +11,24 @@
 <body>
 	<%
 		String nomeUsuario = request.getParameter("nomeUsuario");
+		String senhaUsuario = request.getParameter("senhaUsuario");
 	
 		Conexao c = new Conexao();
 		
-		String sql = "insert into usuario values(null, ?)";
-		
-		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
-		
-		p.setString(1, nomeUsuario);
-		
-		p.execute();
+		if (nomeUsuario != null && !nomeUsuario.isEmpty()
+			&& senhaUsuario != null && !senhaUsuario.isEmpty()) {	
+			String sql = "insert into usuario values(null, ?)";
+			
+			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+			
+			p.setString(1, nomeUsuario);
+			
+			p.execute();
+					
+		}
 		
 		response.sendRedirect("index.jsp");
+		
 	%>
 </body>
 </html></html>

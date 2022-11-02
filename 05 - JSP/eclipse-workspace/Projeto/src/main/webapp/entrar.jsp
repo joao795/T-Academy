@@ -9,8 +9,16 @@
 </head>
 <body>
 	<%	
-		session.setAttribute("usuario", request.getParameter("usuario"));
-		response.sendRedirect("index.jsp");
+		if (request.getParameter("usuario") != null
+			&& !request.getParameter("usuario").isEmpty()) {
+			session.setAttribute("usuario", request.getParameter("usuario"));
+			response.sendRedirect("index.jsp");
+		}
+		else {
+			response.sendRedirect("login.jsp");
+		}
+	
+		
 	%>
 </body>
 </html><%@ page language="java" contentType="text/html; charset=ISO-8859-1"

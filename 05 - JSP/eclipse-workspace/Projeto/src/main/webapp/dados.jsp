@@ -60,17 +60,17 @@
     </div>
   </div>
 </nav>
-	<form action="cadastrar.jsp" class="formulario">
+	<form action="alterarDados.jsp" class="formulario">
 	<div class="mb-3">
-		<label for="nomeUsuario">Escolha um nome de usuario:</label>
+		<label for="nomeUsuario">Novo nome de usuario:</label>
 		<input type="text" name="nomeUsuario">
 	</div>
 	<div class="mb-3">
-		<label for="senhaUsuario">Crie uma senha:</label>
+		<label for="senhaUsuario">Nova senha:</label>
 		<input type="password" name="senhaUsuario">
 	</div>
 	<div class="mb-3">
-		<input type="submit" class="btn btn-primary" value="Cadastrar">
+		<input type="submit" class="btn btn-warning" value="Alterar">
 	</div>
 	</form>
 </body>

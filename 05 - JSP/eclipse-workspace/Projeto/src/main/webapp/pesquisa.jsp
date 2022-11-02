@@ -23,7 +23,7 @@
           <a class="nav-link active" aria-current="page" href="index.jsp">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="crud.jsp">Nova postagem</a>
+          <a class="nav-link" href="postar.jsp">Nova postagem</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="removerPostagem.jsp">Remover postagem</a>
@@ -31,7 +31,27 @@
         <li class="nav-item">
           <a class="nav-link" href="alterarPostagem.jsp">Alterar postagem</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.jsp">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cadastro.jsp">Cadastro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sair.jsp">Sair</a>
+        </li>
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administrador
+          </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="usuarios.jsp">Usuarios</a></li>
+            <li><a class="dropdown-item" href="comentarios.jsp">Comentarios</a></li>
+          </ul>
       </ul>
+      <form class="d-flex" role="search" action="pesquisa.jsp">
+        <input name="termo" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+      </form>
     </div>
   </div>
 </nav>

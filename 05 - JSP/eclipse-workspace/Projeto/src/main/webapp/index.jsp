@@ -46,6 +46,9 @@
           <a class="nav-link" href="cadastro.jsp">Cadastro</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="dados.jsp">Alterar dados</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="sair.jsp">Sair</a>
         </li>
          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -67,7 +70,10 @@
 		<% 
 			if ((String)session.getAttribute("usuario") != null) {
 				out.print("Ola, " + (String)session.getAttribute("usuario")); 
-			}		
+			}	
+			else {
+				out.println("");
+			}
 		%>
 	</div>
 
@@ -82,11 +88,16 @@
 	%>
 
 	<form action="postagem.jsp" style="text-align: center; padding: 20px;">
-		<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
-		<h1><% out.print(r.getString(2)); %></h1>
-		<% out.print(r.getString(3)); %><br>
-
-		<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			</div>
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+				<% out.print(r.getString(3)); %>
+			</div>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">
+			</div>	
 
 	</form>
 

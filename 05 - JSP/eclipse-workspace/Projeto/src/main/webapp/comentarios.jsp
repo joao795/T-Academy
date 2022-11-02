@@ -1,3 +1,7 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="pacote.Conexao"%>
+<%@page import="java.sql.Statement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,11 +13,7 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
 <link rel="stylesheet" href="estilos.css">
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
@@ -60,18 +60,41 @@
     </div>
   </div>
 </nav>
-	<form action="cadastrar.jsp" class="formulario">
-	<div class="mb-3">
-		<label for="nomeUsuario">Escolha um nome de usuario:</label>
-		<input type="text" name="nomeUsuario">
-	</div>
-	<div class="mb-3">
-		<label for="senhaUsuario">Crie uma senha:</label>
-		<input type="password" name="senhaUsuario">
-	</div>
-	<div class="mb-3">
-		<input type="submit" class="btn btn-primary" value="Cadastrar">
-	</div>
+	<%
+			Conexao c = new Conexao();
+	
+			//int codigo = Integer.parseInt(request.getParameter("codigo"));
+		
+			String sql = "select * from comentario order by codigo desc";
+						
+			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+			//p.setInt(1, codigo);
+			
+			//Statement s = c.efetuarConexao().createStatement();
+			
+			ResultSet r = p.executeQuery();
+			
+			while (r.next()) {
+				
+		%>
+			
+			<form action="removerComentario.jsp" style="text-align: center; padding: 20px;">
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			</div>
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+				<% out.print(r.getString(3)); %>
+			</div>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-danger btn-sm" value="Remover">
+			</div>	
+
 	</form>
+			
+		
+		<%
+			}
+		%>
 </body>
 </html>

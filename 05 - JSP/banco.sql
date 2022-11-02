@@ -22,7 +22,8 @@ drop table comentario;
 
 create table usuario(
     codigo int primary key auto_increment,
-    nome varchar(20)
+    nome varchar(20),
+    senha varchar(20)
 );
 
 drop table usuario;
