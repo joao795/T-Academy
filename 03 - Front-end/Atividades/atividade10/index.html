@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../estilos.css">
+
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-6">
+            Escolha um candidato:<br>
+            <select name="cadidato" id="candidato">
+                <option value="...">...</option>
+                <option value="joao">João</option>
+                <option value="ralf">Ralf</option>
+                <option value="brena">Brena</option>
+                <option value="eula">Eula</option>
+                <option value="nulo">Nulo</option>
+            </select>
+            <input type="button" value="Votar" class="botao" onclick="votar()">
+            <input type="button" value="Contar votos" name="" id="" class="botao" onclick="contarVotos()">
+            <div id="resultado">
+                
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="../../Imagens/voto.png" alt="" height="300px">
+        </div>
+    </div>
+</body>
+</html>

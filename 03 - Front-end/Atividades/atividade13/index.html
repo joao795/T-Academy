@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../estilos.css">
+
+    <script src="script.js"></script>
+</head>
+<body id="body13">
+    <img src="../../Imagens/froggers.gif" alt="">
+    <br>
+    <label for="nome">Nome do aluno:</label>
+    <input type="text" name="" id="nome">
+    <br>
+    <label for="nota1">Primeira nota:</label>
+    <input type="number" id="nota1" min="0">
+    <br>
+    <label for="nota2">Segunda nota:</label>
+    <input type="number" name="" id="nota2" min="0">
+    <br>
+    <label for="genero">Gênero do aluno:</label>
+    <select name="" id="genero">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+    </select>
+    <br>
+    <input type="button" value="Enviar" class="botao" name="" id="" onclick="cadastrar()">
+    <br>
+    <table border="1" id="tabelaGenero">
+        <thead>
+            <th>/</th>
+            <th>Homens</th>
+            <th>Mulheres</th>
+        </thead>
+        <tr>
+            <th>Quantidade</th>
+            <th id="qtdHomens">0</th>
+            <th id="qtdMulheres">0</th>
+        </tr>
+        <tr>
+            <th>Percentual (%)</th>
+            <th id="porcentagemHomens">0</th>
+            <th id="porcentagemMulheres">0</th>
+        </tr>
+    </table>
+    <table border="1">
+        <thead>
+            <th>/</th>
+            <th>Aprovados</th>
+            <th>Reprovados</th>
+        </thead>
+        <tr>
+            <th>Quantidade</th>
+            <th id="qtdAprovados">0</th>
+            <th id="qtdReprovados">0</th>
+        </tr>
+        <tr>
+            <th>Percentual (%)</th>
+            <th id="porcentagemAprovados">0</th>
+            <th id="porcentagemReprovados">0</th>
+        </tr>
+    </table>
+    <table border="1">
+        <thead>
+            <th>/</th>
+            <th>Nome</th>
+            <th>Média</th>
+        </thead>
+        <tr>
+            <th>Melhor aluno</th>
+            <th id="nomeMelhorAluno">-</th>
+            <th id="mediaMelhorAluno">-</th>
+        </tr>
+</body>

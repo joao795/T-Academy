@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../estilos.css">
+
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-6" style="text-align: right;">
+            <label for="nome">Nome do produto:</label>
+            <input type="text" name="" id="nome">
+            <br>
+            <label for="marca">Nome da marca:</label>
+            <input type="text" name="" id="marca">
+            <br>
+            <label for="valor">Valor do produto (R$):</label>
+            <input type="number" name="" id="valor">
+            <br>
+            <input type="button" value="Enviar" name="" id="" class="botao" onclick="cadastrar()">
+
+            <table class="table" id="tabela">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela">
+        
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <img src="../../Imagens/produtos.png" alt="" height="300px">
+        </div>  
+    </div>    
+</body>
+</html>

@@ -1,0 +1,78 @@
+body {
+    text-align: center;
+    margin-top: 100px;
+    background-color: bisque;
+    font-family: cursive;
+    color: crimson;
+}
+
+.fezAniversario {
+    color: purple;
+}
+
+.aniversariante {
+    color: green;
+}
+
+.faraAniversario {
+    color: orange;
+}
+
+div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fuso {
+    text-align: left;
+    padding-left: 200px;
+}
+
+#body12 {
+    background-image: url(../Imagens/carinha.png);
+    color: white;
+    text-shadow: 0px 0px 5px black;
+}
+
+table {
+    background-color: lightblue;
+    color: deeppink;
+    text-shadow: 0px 0px 0px;
+}
+
+card {
+    text-align: left;
+}
+
+input, table {
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+.body05 {
+    text-align: left;
+    margin-left: 300px;
+}
+
+.row {
+    margin-top: 100px;
+    background-color: bisque;
+    font-family: cursive;
+    color: crimson;
+}
+
+.botao {
+    margin-top: 10px;
+    border-radius: 5px;
+    border-color: green;
+    background-color: green;
+    color: white;
+}
+
+#nota1, #nota2 {
+    margin-left: 5px;
+}

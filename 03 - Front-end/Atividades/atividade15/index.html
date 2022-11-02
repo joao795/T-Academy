@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../estilos.css">
+
+    <script src="script.js"></script>
+</head>
+<body>
+    (para descobrir o E-mail e a senha, abra o console)
+    <script>
+        console.log('E-mail: usuario@dominio.com; senha: 12345')
+    </script>
+    <div id="login">        
+        <img src="../../Imagens/usuario.png" alt="" height="75px">
+        <br>
+        Login
+        <br>
+        <label for="email">E-mail:</label>
+        <input type="email" name="" id="email">
+        <br>
+        <label for="senha">Senha:</label>
+        <input type="password" name="" id="senha">
+        <br>
+        <input type="button" onclick="enviar()" value="Enviar" name="" id="botaoLogin" class="botao">
+    </div>
+    <div style="display: none;" id="marcas">
+        <img src="../../Imagens/etiqueta.png" alt="" height="75px">
+        <br>
+        Gerenciar Marcas 
+        <br>
+        <input type="button" name="" id="" class="botao" value="Cadastrar" onclick="cadastrarMarca()">
+        <br>
+        <input type="text" id="nomeMarca">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Nome da marca</th>
+                    <th>Remover</th>
+                </tr>
+            </tbody>
+            <tbody id="tabelaMarcas">
+
+            </tbody>
+        </table>
+    </div>
+    <div style="display: none;" id="produtos">
+        <img src="../../Imagens/sacola.png" alt="" height="75px">
+        <br>
+        Gerenciar Produtos
+        <br>
+        <label for="nome">Nome do produto:</label>
+        <input type="text" name="" id="nomeProduto">
+        <br>
+        <label for="marca">Nome da marca:</label>
+        <input type="text" name="" id="marcaProduto">
+        <br>
+        <label for="valor">Valor (R$):</label>
+        <input type="number" name="" id="valor" min="0">
+        <br>
+        <input type="button" name="" id="" class="botao" value="Enviar" onclick="cadastrarProduto()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do produto</th>
+                    <th>Marca</th>
+                    <th>Valor</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaProdutos">
+
+            </tbody>
+        </table>
+    </div>
+    <div id="finalizar" style="display: none;">
+        <button class="botao" onclick="voltar()">Finalizar</button>
+    </div>
+</body>
+</html>
