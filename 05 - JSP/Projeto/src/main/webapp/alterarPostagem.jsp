@@ -21,14 +21,14 @@
 <body>
 	<nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blog do Joao</a>
+    <a class="navbar-brand" href="#">Blog do João</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.jsp">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="index.jsp">Início</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="postar.jsp">Nova postagem</a>
@@ -43,11 +43,11 @@
   </div>
 </nav>
 	<form action="alterar.jsp" class="formulario">
-		<label for="codigo">Codigo da postagem:</label><br>
+		<label for="codigo">Código da postagem:</label><br>
 		<input type="number" name="codigo"><br>
-		<label for="novoTitulo">Novo titulo:</label><br>	
+		<label for="novoTitulo">Novo título:</label><br>	
 		<input type="text" name="novoTitulo"><br>
-		<label for="novoConteudo">Novo conteudo:</label><br>
+		<label for="novoConteudo">Novo conteúdo:</label><br>
 		<textarea name="novoConteudo" rows="10" cols="10" class="input-group mb-3"></textarea><br>	
 		 <br>
 		 <input type="submit" class="btn btn-warning btn-sm" value="Alterar">

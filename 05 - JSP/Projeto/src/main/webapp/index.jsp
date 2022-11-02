@@ -15,18 +15,20 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+<link rel="stylesheet" href="estilos.css">
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blog do Joao</a>
+    <a class="navbar-brand" href="#">Blog do João</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.jsp">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="index.jsp">Início</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="postar.jsp">Nova postagem</a>
@@ -37,6 +39,22 @@
         <li class="nav-item">
           <a class="nav-link" href="alterarPostagem.jsp">Alterar postagem</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.jsp">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cadastro.jsp">Cadastro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sair.jsp">Sair</a>
+        </li>
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administrador
+          </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="usuarios.jsp">Usuarios</a></li>
+            <li><a class="dropdown-item" href="comentarios.jsp">Comentarios</a></li>
+          </ul>
       </ul>
       <form class="d-flex" role="search" action="pesquisa.jsp">
         <input name="termo" class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
@@ -45,6 +63,13 @@
     </div>
   </div>
 </nav>
+	<div style="text-align: right; padding: 20px;">
+		<% 
+			if ((String)session.getAttribute("usuario") != null) {
+				out.print("Olá, " + (String)session.getAttribute("usuario")); 
+			}		
+		%>
+	</div>
 
 	<%
 		Conexao c = new Conexao();
@@ -59,10 +84,14 @@
 	<form action="postagem.jsp" style="text-align: center; padding: 20px;">
 		<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 		<h1><% out.print(r.getString(2)); %></h1>
-		<% out.print(r.getString(3).substring(0, 20) + "..."); %><br>
+		<% out.print(r.getString(3)); %><br>
 
 		<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">
+
 	</form>
-	<% } %>
+
+	<% 
+		} 
+	%>
 </body>
 </html>

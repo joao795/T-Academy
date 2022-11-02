@@ -12,3 +12,8 @@ body {
 .postagem {
 	padding: 20px;
 }
+
+.ola {
+	text-align: right;
+	border-right: 10px;
+}
