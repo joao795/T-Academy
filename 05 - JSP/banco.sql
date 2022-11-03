@@ -28,13 +28,3 @@ create table usuario(
 );
 
 drop table usuario;
-
-insert into postagem values(null, "aa", "bb");
-insert into comentario values(null, "João", "bom", 1);
-
-insert into comentario_aprovado values(
-(select codigo from comentario where codigo = 1),
-(select nome from comentario where nome = "João"),
-(select conteudo from comentario where conteudo = "bom"),
-(select postagem from comentario where postagem = 1)
-);
