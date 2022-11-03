@@ -15,9 +15,8 @@
 	
 		Conexao c = new Conexao();
 		
-		if (nomeUsuario != null && !nomeUsuario.isEmpty()
-			&& senhaUsuario != null && !senhaUsuario.isEmpty()) {	
-			String sql = "insert into usuario values(null, ?, ?)";
+	
+			String sql = "insert into usuario values(null, ?, ?, 0, 0)";
 			
 			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 			
@@ -26,7 +25,7 @@
 			
 			p.execute();
 					
-		}
+	
 		
 		response.sendRedirect("index.jsp");
 		

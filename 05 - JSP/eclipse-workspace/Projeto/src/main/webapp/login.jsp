@@ -78,6 +78,11 @@
 	</div>		
 	</form>
 	
+	<form action="cadastro.jsp" style="text-align: center; padding: 20px;">
+		Não tem uma conta? Crie uma clicando no botão abaixo:<br>
+		<input type="submit" class="btn btn-primary btn-sm" value="Criar conta">
+	</form>
+	
 	<%
 		}
 		else {

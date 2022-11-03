@@ -69,11 +69,11 @@
 	<form action="cadastrar.jsp" class="formulario">
 	<div class="mb-3">
 		<label for="nomeUsuario">Escolha um nome de usuario:</label>
-		<input type="text" name="nomeUsuario">
+		<input type="text" name="nomeUsuario" required>
 	</div>
 	<div class="mb-3">
 		<label for="senhaUsuario">Crie uma senha:</label>
-		<input type="password" name="senhaUsuario">
+		<input type="password" name="senhaUsuario" required>
 	</div>
 	<div class="mb-3">
 		<input type="submit" class="btn btn-primary" value="Cadastrar">

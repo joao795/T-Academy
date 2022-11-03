@@ -14,7 +14,7 @@
 		
 		Conexao c = new Conexao();
 		
-		String sql = "delete from usuario where codigo = ?";
+		String sql = "update usuario set banido = 1 where codigo = ?";
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 		p.setInt(1, codigo);

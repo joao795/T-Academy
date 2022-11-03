@@ -69,8 +69,9 @@
 </nav>
 	<%
 			String usuario = (String) session.getAttribute("usuario");
+			int admin = (int) session.getAttribute("administrador");
 	
-			if (usuario.equals("admin")) {
+			if (admin == 1) {
 	
 				Conexao c = new Conexao();
 		
@@ -137,7 +138,7 @@
 			
 			}
 			else {
-				out.print("Você precisa ser o administrador para acessar esta página.");
+				out.print("Você precisa ser o administrador para acessar esta página :(");
 			}
 		%>
 </body>

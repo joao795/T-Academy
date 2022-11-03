@@ -91,8 +91,24 @@
 			Deixe seu comentario<br>
 			
 			<%
-				if ((String) session.getAttribute("usuario") != null) {
+				String usuario = (String) session.getAttribute("usuario");
+				if (usuario == null) {
+					
 			%>
+			
+			<%out.print("Para realizar comentários é necessário ter uma conta, clique");%> 
+		<button onclick="location.href='login.jsp'">aqui</button>
+		<%out.print("para fazer o login ou criar uma conta");%>
+		
+		<%
+				}
+				else {	
+					int banido = (int) session.getAttribute("banido");
+					if (banido == 1) {
+						out.print("Você foi banido e não pode mais deixar comentários >:(");
+					}
+					else {
+		%>
 			
 			<div>				
 				<form action="comentar.jsp" style="text-align: center;" class="formulario">
@@ -109,12 +125,9 @@
 			</div>
 			
 		
-		<%
-				}
-				else {
-					out.print("Você precisa estar logado para deixar comentários :(");
-				}
-			}
+		<%			
+			
+				
 			
 			Conexao cc = new Conexao();
 			//int codigoc = Integer.parseInt(request.getParameter("codigo"));
@@ -129,12 +142,16 @@
 			while (rc.next()) {
 				
 		%>
-		
+			
+			<br>
 			<% out.print(rc.getString(2)); %>:<br>
 			<% out.print(rc.getString(3)); %><br><br>
 			
 		<%
+				}
+					}
 			}
+		}
 		%>
 </body>
 </html>

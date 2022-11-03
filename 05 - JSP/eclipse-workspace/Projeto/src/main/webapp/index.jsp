@@ -93,12 +93,11 @@
 			</div>
 			<div class="mb-3">
 				<h1><% out.print(r.getString(2)); %></h1>
-				<% out.print(r.getString(3)); %>
+				<% out.print(r.getString(3).substring(0, 2) + "..."); %>
 			</div>
 			<div class="mb-3">
 				<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">
 			</div>	
-
 	</form>
 
 	<% 

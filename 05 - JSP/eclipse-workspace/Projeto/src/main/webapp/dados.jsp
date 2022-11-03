@@ -63,6 +63,11 @@
     </div>
   </div>
 </nav>
+	<%
+		int banido = (int) session.getAttribute("banido");
+		if (banido == 0) {
+	%>
+
 	<form action="alterarDados.jsp" class="formulario">
 	<div class="mb-3">
 		<label for="nomeUsuario">Novo nome de usuario:</label>
@@ -76,5 +81,12 @@
 		<input type="submit" class="btn btn-warning" value="Alterar">
 	</div>
 	</form>
+	
+	<%
+		}
+		else {
+			out.print("Você foi banido e não pode alterar seus dados >:(");
+		}
+	%>
 </body>
 </html>
