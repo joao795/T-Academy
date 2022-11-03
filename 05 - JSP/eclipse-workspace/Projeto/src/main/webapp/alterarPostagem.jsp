@@ -67,7 +67,8 @@
   </div>
 </nav>
 	<%
-		if ((String) session.getAttribute("usuario") == "admin") {
+		int admin = (int) session.getAttribute("administrador");
+		if (admin == 1) {
 	%>
 	<form action="alterar.jsp" class="formulario">
 		<label for="codigo">Codigo da postagem:</label><br>

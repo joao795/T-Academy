@@ -10,7 +10,8 @@
 </head>
 <body>
 	<%
-		if ((String) session.getAttribute("usuario") == "admin") {
+		int admin = (int) session.getAttribute("administrador");
+		if (admin == 1) {
 			String titulo = request.getParameter("nomePostagem");
 			String conteudo = request.getParameter("conteudoPostagem");
 			

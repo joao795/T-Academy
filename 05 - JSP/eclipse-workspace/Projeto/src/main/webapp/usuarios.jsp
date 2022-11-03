@@ -68,13 +68,14 @@
 </nav>
 	<%
 			String usuario = (String) session.getAttribute("usuario");
+			int admin = (int) session.getAttribute("administrador");
 	
-			if (usuario.equals("admin")) {
+			if (admin == 1) {
 				Conexao c = new Conexao();
 		
 				//int codigo = Integer.parseInt(request.getParameter("codigo"));
 			
-				String sql = "select * from usuario order by codigo desc";
+				String sql = "select * from usuario where administrador = 0 order by codigo desc";
 							
 				PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 				//p.setInt(1, codigo);

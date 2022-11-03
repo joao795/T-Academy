@@ -36,7 +36,7 @@
 				p.setString(2, senha);
 				
 				session.setAttribute("usuario", usuario);
-				session.setAttribute("admin", 0);
+				session.setAttribute("administrador", 0);
 				session.setAttribute("banido", 0);
 							
 				p.execute();
