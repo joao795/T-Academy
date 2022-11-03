@@ -64,20 +64,22 @@
   </div>
 </nav>
 	<%
-			Conexao c = new Conexao();
+			if ((String) session.getAttribute("usuario") == "admin") {
 	
-			//int codigo = Integer.parseInt(request.getParameter("codigo"));
+				Conexao c = new Conexao();
 		
-			String sql = "select * from comentario order by codigo desc";
+				//int codigo = Integer.parseInt(request.getParameter("codigo"));
+			
+				String sql = "select * from comentario order by codigo desc";
+							
+				PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+				//p.setInt(1, codigo);
+				
+				//Statement s = c.efetuarConexao().createStatement();
+				
+				ResultSet r = p.executeQuery();
 						
-			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
-			//p.setInt(1, codigo);
-			
-			//Statement s = c.efetuarConexao().createStatement();
-			
-			ResultSet r = p.executeQuery();
-			
-			while (r.next()) {
+				while (r.next()) {
 				
 		%>
 			
@@ -92,11 +94,23 @@
 			<div class="mb-3">
 				<input type="submit" class="btn btn-danger btn-sm" value="Remover">
 			</div>	
-
+			</form>
+			<form action="alterarComentario.jsp" style="text-align: center; padding: 20px;">
+			Alterar comentário:
+			<div class="mb-3">
+			<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<label for="comentario">Novo comentário:</label>
+				<textarea name="comentario" rows="10" cols="10" class="input-group mb-3"></textarea>
+			</div>
 	</form>
 			
 		
 		<%
+				}
+			
+			}
+			else {
+				out.print("Você precisa ser o administrador para acessar esta página.");
 			}
 		%>
 </body>

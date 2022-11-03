@@ -66,6 +66,9 @@
     </div>
   </div>
 </nav>
+	<%
+		if ((String) session.getAttribute("usuario") == "admin") {
+	%>
 	<form action="alterar.jsp" class="formulario">
 		<label for="codigo">Codigo da postagem:</label><br>
 		<input type="number" name="codigo"><br>
@@ -76,5 +79,12 @@
 		 <br>
 		 <input type="submit" class="btn btn-warning btn-sm" value="Alterar">
 	</form>
+	
+	<%
+		}
+		else {
+			out.print("Você precisa ser o administrador para alterar postagens :(");
+		}
+	%>
 </body>
 </html>

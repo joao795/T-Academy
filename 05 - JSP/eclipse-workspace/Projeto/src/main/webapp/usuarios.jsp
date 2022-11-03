@@ -64,20 +64,21 @@
   </div>
 </nav>
 	<%
-			Conexao c = new Conexao();
-	
-			//int codigo = Integer.parseInt(request.getParameter("codigo"));
+			if ((String) session.getAttribute("usuario") == "admin") {
+				Conexao c = new Conexao();
 		
-			String sql = "select * from usuario order by codigo desc";
-						
-			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
-			//p.setInt(1, codigo);
+				//int codigo = Integer.parseInt(request.getParameter("codigo"));
 			
-			//Statement s = c.efetuarConexao().createStatement();
+				String sql = "select * from usuario order by codigo desc";
+							
+				PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+				//p.setInt(1, codigo);
+				
+				//Statement s = c.efetuarConexao().createStatement();
+				
+				ResultSet r = p.executeQuery();				
 			
-			ResultSet r = p.executeQuery();
-			
-			while (r.next()) {
+				while (r.next()) {
 				
 		%>
 			
@@ -96,6 +97,11 @@
 			
 		
 		<%
+				}
+			
+			}
+			else {
+				out.print("Você precisa ser o administrador para acessar esta página :(");
 			}
 		%>
 </body>

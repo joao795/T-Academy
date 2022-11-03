@@ -85,14 +85,15 @@
 				<h1><% out.print(r.getString(2)); %></h1><br>
 				<% out.print(r.getString(3)); %>
 			</div>
-			<div>
-				Deixe seu comentario
+			Deixe seu comentario
+			
+			<%
+				if ((String) session.getAttribute("usuario") != null) {
+			%>
+			
+			<div>				
 				<form action="comentar.jsp" style="text-align: center;" class="formulario">
 				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
-		<div class="mb-3">
-			<label for="nome">Seu nome:</label>
-			<input type="text" name="nome" class="input-group mb-3">
-		</div>
 		<div class="mb-3">
 			<label for="comentario">Seu comentario:</label>
 			<textarea name="comentario" rows="10" cols="10" class="input-group mb-3"></textarea>
@@ -105,6 +106,10 @@
 			
 		
 		<%
+				}
+				else {
+					out.print("Você precisa estar logado para deixar comentários :(");
+				}
 			}
 			
 			Conexao cc = new Conexao();

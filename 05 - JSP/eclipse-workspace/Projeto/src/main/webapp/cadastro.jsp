@@ -63,6 +63,9 @@
     </div>
   </div>
 </nav>
+	<%
+		if ((String) session.getAttrbiute("usuario") == null) {
+	%>
 	<form action="cadastrar.jsp" class="formulario">
 	<div class="mb-3">
 		<label for="nomeUsuario">Escolha um nome de usuario:</label>
@@ -76,5 +79,12 @@
 		<input type="submit" class="btn btn-primary" value="Cadastrar">
 	</div>
 	</form>
+	
+	<%
+		}
+		else {
+			out.print("Você está logado. Para criar uma nova conta, primeiro desconecte-se.");
+		}
+	%>
 </body>
 </html>

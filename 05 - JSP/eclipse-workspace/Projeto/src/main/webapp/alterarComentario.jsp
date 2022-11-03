@@ -1,5 +1,5 @@
-<%@page import="pacote.Conexao"%>
 <%@page import="java.sql.PreparedStatement"%>
+<%@page import="pacote.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -10,27 +10,23 @@
 </head>
 <body>
 	<%
-		String nome = (String) session.getAttribute("nome");
 		String conteudo = request.getParameter("comentario");
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		
-		//out.print(titulo + "<br>" + conteudo);
-		
 		Conexao c = new Conexao();
 		
-		String sql = "insert into comentario values(null, ?, ?, ?)";
+		String sql = "update comentario set conteudo = ? where codigo = ?";
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 		
-		p.setString(1, nome);
-		p.setString(2, conteudo);
-		p.setInt(3, codigo);
+		p.setString(1, conteudo);
+		p.setInt(2, codigo);
 		
 		p.execute();
 		
 		response.sendRedirect("index.jsp");
+	
+	
 	%>
 </body>
 </html>
-</body>
-</html>/html>

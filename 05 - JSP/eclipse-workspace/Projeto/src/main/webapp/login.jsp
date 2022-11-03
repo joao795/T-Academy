@@ -60,6 +60,9 @@
     </div>
   </div>
 </nav>
+	<%
+		if ((String) session.getAttribute("usuario") == null) {
+	%>
 	<form action="entrar.jsp" class="formulario">
 	<div class="mb-3">
 		<label for="usuario">Usuario:</label>
@@ -69,5 +72,12 @@
 		<input type="submit" value="Enviar" class="btn btn-primary">
 	</div>		
 	</form>
+	
+	<%
+		}
+		else {
+			out.print("Você já está em uma sessão. Para entrar novamente, primeiro desconecte-se.");
+		}
+	%>
 </body>
 </html>

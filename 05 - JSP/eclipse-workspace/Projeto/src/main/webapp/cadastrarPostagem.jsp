@@ -10,24 +10,30 @@
 </head>
 <body>
 	<%
-		String titulo = request.getParameter("nomePostagem");
-		String conteudo = request.getParameter("conteudoPostagem");
-		
-		//out.print(titulo + "<br>" + conteudo);
-		
-		Conexao c = new Conexao();
-		
-		String sql = "insert into postagem values (null, ?, ?)";
-		
-		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
-		
-		p.setString(1, titulo);
-		p.setString(2, conteudo);
-		
-		p.execute();
-		
-		response.sendRedirect("index.jsp");
-		
+		if ((String) session.getAttribute("usuario") == "admin") {
+			String titulo = request.getParameter("nomePostagem");
+			String conteudo = request.getParameter("conteudoPostagem");
+			
+			//out.print(titulo + "<br>" + conteudo);
+			
+			Conexao c = new Conexao();
+			
+			String sql = "insert into postagem values (null, ?, ?)";
+			
+			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+			
+			p.setString(1, titulo);
+			p.setString(2, conteudo);
+			
+			p.execute();
+			
+			response.sendRedirect("index.jsp");
+			
+		}
+		else {
+			out.print("Você precisa ser o administrador para fazer postagens :(");
+		}
+			
 	%>
 </body>
 </html>
