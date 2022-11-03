@@ -85,7 +85,32 @@
 				ResultSet r = p.executeQuery();				
 			
 				while (r.next()) {
-				
+					sql = "select banido from usuario where nome = ?";
+					p = c.efetuarConexao().prepareStatement(sql);
+					
+					p.setString(1, r.getString(2));
+					
+					ResultSet rBanido = p.executeQuery();
+					
+					while(rBanido.next()) {
+						if (rBanido.getInt(1) == 1) {
+					
+						
+						
+			%>
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			</div>
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+			</div>
+			<div class="mb-3">
+				Banido
+			</div>	
+		
+		<%	
+					}
+					else {
 		%>
 			
 			<form action="banirUsuario.jsp" style="text-align: center; padding: 20px;">
@@ -103,8 +128,9 @@
 			
 		
 		<%
+						}
+					}
 				}
-			
 			}
 			else {
 				out.print("Você precisa ser o administrador para acessar esta página :(");

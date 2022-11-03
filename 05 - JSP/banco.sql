@@ -25,7 +25,7 @@ create table usuario(
     codigo int primary key auto_increment,
     nome varchar(20),
     senha varchar(20),
-    bloquado int,
+    banido int,
     administrador int
 );
 
