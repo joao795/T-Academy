@@ -92,7 +92,8 @@
 				<% out.print(r.getString(3)); %>
 			</div>
 			<div class="mb-3">
-				<input type="submit" class="btn btn-danger btn-sm" value="Remover">
+			<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<input type="submit" class="btn btn-success btn-sm" value="Aprovar">
 			</div>	
 			</form>
 			<form action="alterarComentario.jsp" style="text-align: center; padding: 20px;">
@@ -101,6 +102,7 @@
 			<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 				<label for="comentario">Novo comentário:</label>
 				<textarea name="comentario" rows="10" cols="10" class="input-group mb-3"></textarea>
+				<input type="submit" class="btn btn-warning btn-sm" value="Alterar">
 			</div>
 	</form>
 			

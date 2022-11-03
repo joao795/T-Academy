@@ -115,7 +115,7 @@
 			Conexao cc = new Conexao();
 			//int codigoc = Integer.parseInt(request.getParameter("codigo"));
 			
-			String sqlc = "select * from comentario where postagem = ?";
+			String sqlc = "select * from comentario_aprovado where postagem = ?";
 			//Statement sc = cc.efetuarConexao().createStatement();
 			PreparedStatement pc = cc.efetuarConexao().prepareStatement(sqlc);
 			

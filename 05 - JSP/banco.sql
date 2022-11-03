@@ -18,6 +18,14 @@ create table comentario(
     foreign key (postagem) references postagem(codigo)
 );
 
+create table comentario_aprovado(
+    codigo int primary key auto_increment,
+    nome varchar(20),
+    conteudo varchar(255),
+    postagem int,
+    foreign key (postagem) references postagem(codigo) 
+);
+
 drop table comentario;
 
 create table usuario(

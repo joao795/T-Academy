@@ -1,0 +1,29 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="pacote.Conexao"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		
+		Conexao c = new Conexao();
+		
+		String sql = "insert into comentario_aprovado values(select * from comentario where codigo = ?)";
+		String sql1 = "delete from comentario where codigo = ?";
+		
+		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+	
+		p.setInt(1, codigo);
+		
+		p.execute();
+		
+		response.sendRedirect("index.jsp");
+	%>
+</body>
+</html>
