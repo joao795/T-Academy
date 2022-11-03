@@ -62,6 +62,12 @@
     </div>
   </div>
 </nav>
+	<%
+		String usuario = (String) session.getAttribute("usuario");
+	
+		if (usuario.equals("admin")) {
+	%>
+
 	<form action="cadastrarPostagem.jsp" style="text-align: center;" class="formulario">
 		<div class="mb-3">
 			<label for="nomePostagem">Titulo da postagem:</label>
@@ -75,6 +81,13 @@
 			<input type="submit" value="Postar" class="btn btn-primary">
 		</div>		
 	</form>
+	
+	<%
+		}
+	else {
+		out.print("Você precisa ser o administrador para fazer postagens :(");
+	}
+	%>
 	
 	<link rel="stylesheet" href="estilos.css">
 </body>

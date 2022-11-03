@@ -10,7 +10,9 @@
 </head>
 <body>
 	<%
-		if ((String) session.getAttribute != null) {
+		String usuario = (String) session.getAttribute("usuario");
+	
+		if (usuario != null) {
 			String novoUsuario = request.getParameter("nomeUsuario");
 			String novaSenha = request.getParameter("senhaUsuario");
 		

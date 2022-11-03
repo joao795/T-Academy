@@ -67,6 +67,10 @@
   </div>
 </nav>
 	<%
+		String usuario = (String) session.getAttribute("usuario");
+	
+		if (usuario.equals("admin")) {	
+	
 		Conexao c = new Conexao();
 		String sql = "select * from postagem";
 		Statement s = c.efetuarConexao().createStatement();
@@ -86,6 +90,13 @@
 			 <input type="submit" class="btn btn-danger btn-sm" value="Remover">
 		</form>
 
-	<% } %>
+	<% 
+		}
+		
+		}
+		else {
+			out.print("Você precisa ser o administrador para remover postagens :(");
+		}
+	%>
 </body>
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%
-		String nome = (String) session.getAttribute("nome");
+		String nome = request.getParameter("usuario");
 		String conteudo = request.getParameter("comentario");
 		int postagem = Integer.parseInt(request.getParameter("codigo"));
 		

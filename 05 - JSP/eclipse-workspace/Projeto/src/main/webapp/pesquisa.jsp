@@ -9,6 +9,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
@@ -62,20 +68,35 @@
 		Conexao c = new Conexao();
 		String pesquisa = request.getParameter("termo");
 	
-		String sql = "select * from postagem where titulo like '%?%'";
+		String sql = "select * from postagem where titulo like ?";
 		//Statement s = c.efetuarConexao().createStatement();
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 		
-		p.setString(1, pesquisa);
+		p.setString(1, "%" + pesquisa + "%");
 		
 		ResultSet r = p.executeQuery();
 		
 		while (r.next()) {
-			out.print(r.getString(2));
-			out.print(r.getString(3));
-		}
 		
+	%>
+	
+	<form action="postagem.jsp" style="text-align: center; padding: 20px;">
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			</div>
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+				<% out.print(r.getString(3)); %>
+			</div>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">
+			</div>	
+
+	</form>
+	
+	<%
+		}
 	%>
 		
 </body>

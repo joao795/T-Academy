@@ -64,7 +64,7 @@
   </div>
 </nav>
 	<%
-		if ((String) session.getAttrbiute("usuario") == null) {
+		if ((String)session.getAttribute("usuario") == null) {
 	%>
 	<form action="cadastrar.jsp" class="formulario">
 	<div class="mb-3">

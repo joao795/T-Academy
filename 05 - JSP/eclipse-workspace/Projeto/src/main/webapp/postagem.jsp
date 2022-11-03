@@ -13,6 +13,9 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -85,7 +88,7 @@
 				<h1><% out.print(r.getString(2)); %></h1><br>
 				<% out.print(r.getString(3)); %>
 			</div>
-			Deixe seu comentario
+			Deixe seu comentario<br>
 			
 			<%
 				if ((String) session.getAttribute("usuario") != null) {
@@ -93,9 +96,10 @@
 			
 			<div>				
 				<form action="comentar.jsp" style="text-align: center;" class="formulario">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly><br><br>
 		<div class="mb-3">
 			<label for="comentario">Seu comentario:</label>
+			<input type="text" name="usuario" readonly value="<% out.print((String) session.getAttribute("usuario")); %>"><br><br>
 			<textarea name="comentario" rows="10" cols="10" class="input-group mb-3"></textarea>
 		</div>
 		<div class="mb-3">
