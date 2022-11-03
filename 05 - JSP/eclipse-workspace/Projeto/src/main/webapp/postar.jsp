@@ -42,6 +42,9 @@
           <a class="nav-link" href="cadastro.jsp">Cadastro</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="dados.jsp">Alterar dados</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="sair.jsp">Sair</a>
         </li>
          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
