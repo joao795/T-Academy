@@ -12,19 +12,19 @@
 	<%
 		String nome = (String) session.getAttribute("nome");
 		String conteudo = request.getParameter("comentario");
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		int postagem = Integer.parseInt(request.getParameter("codigo"));
 		
 		//out.print(titulo + "<br>" + conteudo);
 		
 		Conexao c = new Conexao();
 		
-		String sql = "insert into comentario values(null, ?, ?, ?)";
+		String sql = "insert into comentario values(null, ?, ?, ?, 0)";
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 		
 		p.setString(1, nome);
 		p.setString(2, conteudo);
-		p.setInt(3, codigo);
+		p.setInt(3, postagem);
 		
 		p.execute();
 		

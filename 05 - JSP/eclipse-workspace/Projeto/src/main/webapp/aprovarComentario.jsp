@@ -14,8 +14,7 @@
 		
 		Conexao c = new Conexao();
 		
-		String sql = "insert into comentario_aprovado values(select * from comentario where codigo = ?)";
-		String sql1 = "delete from comentario where codigo = ?";
+		String sql = "update comentario set aprovado = 1 where codigo = ?";
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 	

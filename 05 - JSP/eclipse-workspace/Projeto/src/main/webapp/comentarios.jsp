@@ -80,10 +80,11 @@
 				ResultSet r = p.executeQuery();
 						
 				while (r.next()) {
+					if (r.getInt(5) == 0) {
 				
 		%>
 			
-			<form action="removerComentario.jsp" style="text-align: center; padding: 20px;">
+			<form action="aprovarComentario.jsp" style="text-align: center; padding: 20px;">
 			<div class="mb-3">
 				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 			</div>
@@ -95,7 +96,19 @@
 			<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 				<input type="submit" class="btn btn-success btn-sm" value="Aprovar">
 			</div>	
+			
+			<%
+					}
+			%>
+			
+			
 			</form>
+			<form action="removerComentario.jsp" style="text-align: center; padding: 20px;">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<input type="submit" class="btn btn-danger btn-sm" value="Remover">
+			</form>
+			
+			
 			<form action="alterarComentario.jsp" style="text-align: center; padding: 20px;">
 			Alterar comentário:
 			<div class="mb-3">
