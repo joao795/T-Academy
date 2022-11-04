@@ -22,14 +22,13 @@
 			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 			
 			p.setString(1, nomeUsuario);
-			p.setString(2, senhaUsuario);
-			p.setString(3, emailUsuario);
+			p.setString(2, emailUsuario);
+			p.setString(3, senhaUsuario);
 			
 			p.execute();
 					
-	
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("login.jsp");
 		
 	%>
 </body>

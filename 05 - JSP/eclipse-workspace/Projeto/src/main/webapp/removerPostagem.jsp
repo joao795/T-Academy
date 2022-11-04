@@ -87,13 +87,16 @@
 	%>
 
 		<form action="remover.jsp" style="text-align: center; padding: 20px;">
-			<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly><br>	
-			<h1><% out.print(r.getString(2)); %></h1><br>
-			<% out.print(r.getString(3)); %><br>		
-			<!-- 
-				<input type="submit" class="btn btn-warning btn-sm" value="Alterar">
-			 -->
-			 <input type="submit" class="btn btn-danger btn-sm" value="Remover">
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			</div>
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+				<% out.print(r.getString(3).substring(0, 10) + "..."); %>
+			</div>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-danger btn-sm" value="Remover">
+			</div>
 		</form>
 
 	<% 

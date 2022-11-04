@@ -70,10 +70,18 @@
     </div>
   </div>
 </nav>
+	<% 
+		if (session.getAttribute("usuario") != null) {
+			String usuario = (String) session.getAttribute("usuario");
+		
+
+	%>
 	<div style="text-align: right; padding: 20px;">
+		<% out.print("Olá, " + usuario + "."); %>
 	</div>
 
 	<%
+		}
 		Conexao c = new Conexao();
 		String sql = "select * from postagem order by codigo desc limit 10";
 		Statement s = c.efetuarConexao().createStatement();

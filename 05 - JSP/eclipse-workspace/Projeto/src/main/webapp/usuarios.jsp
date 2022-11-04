@@ -110,7 +110,7 @@
 			<div class="mb-3">
 				<h1><% out.print(r.getString(2)); %></h1>
 			</div>
-			<div class="mb-3">
+			<div class="mb-3" style="color: red;">
 				Banido
 			</div>	
 		

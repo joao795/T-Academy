@@ -10,25 +10,22 @@
 </head>
 <body>
 	<%
-		String usuario = (String) session.getAttribute("usuario");
+		//String usuario = (String) session.getAttribute("usuario");
 
-		String novoUsuario = request.getParameter("nomeUsuario");
+		String novoEmail = request.getParameter("email");
 		String novaSenha = request.getParameter("senhaUsuario");
 	
 		Conexao c = new Conexao();
 		
-		String sql = "update usuario set nome = ?, senha = ? where nome like ?";
+		String sql = "update usuario set email = ?, senha = ? where nome like ?";
 		
 		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 		
-		p.setString(1, novoUsuario);
+		p.setString(1, novoEmail);
 		p.setString(2, novaSenha);
 		p.setString(3, (String) session.getAttribute("usuario"));
 		
 		p.execute();
-	
-		//request.getSession().removeAttribute("usuario");
-		request.getSession().setAttribute("usuario", usuario);
 		
 		response.sendRedirect("index.jsp");
 		

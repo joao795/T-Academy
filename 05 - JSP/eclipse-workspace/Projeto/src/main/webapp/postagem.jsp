@@ -127,7 +127,7 @@
 			%>
 			
 			<%out.print("Para deixar comentários é necessário ter uma conta. Clique");%> 
-		<a href="location.href='login.jsp'">aqui</a>
+		<a href="login.jsp">aqui</a>
 		<%out.print("para fazer login ou criar uma conta.");%>
 		
 		<%

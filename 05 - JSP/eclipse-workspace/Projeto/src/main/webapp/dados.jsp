@@ -77,10 +77,6 @@
 
 	<form action="alterarDados.jsp" class="formulario">
 	<div class="mb-3">
-		<label for="nomeUsuario">Novo nome de usuário:</label>
-		<input type="text" name="nomeUsuario" maxlength="20" required>
-	</div>
-	<div class="mb-3">
 		<label for="email">Novo E-mail:</label>
 		<input type="email" name="email" maxlength="20" required>
 	</div>
@@ -96,7 +92,7 @@
 	<%
 			}
 			else {
-				out.print("Você foi banido e não pode alterar seus dados >:(");
+				out.print("Você foi banido e não pode mais alterar seus dados >:(");
 			}
 		}
 		
