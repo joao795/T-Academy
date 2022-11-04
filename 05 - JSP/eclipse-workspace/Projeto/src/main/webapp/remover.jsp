@@ -14,9 +14,15 @@
 		
 		Conexao c = new Conexao();
 		
+		String sqlComentarios = "delete from comentario where postagem = ?";
 		String sql = "delete from postagem where codigo = ?";
 		
-		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+		PreparedStatement p = c.efetuarConexao().prepareStatement(sqlComentarios);
+		p.setInt(1, codigo);
+		
+		p.execute();
+		
+		p = c.efetuarConexao().prepareStatement(sql);
 		p.setInt(1, codigo);
 		
 		p.execute();

@@ -52,7 +52,6 @@
             <li><a class="dropdown-item" href="comentarios.jsp">Comentários</a></li>
             <li><a class="dropdown-item" href="postar.jsp">Nova postagem</a></li>
             <li><a class="dropdown-item" href="removerPostagem.jsp">Remover postagem</a></li>
-            <li><a class="dropdown-item" href="alterarPostagem.jsp">Alterar postagem</a></li>
       </ul>
       <%
         		}

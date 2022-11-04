@@ -55,7 +55,6 @@
             <li><a class="dropdown-item" href="comentarios.jsp">Comentários</a></li>
             <li><a class="dropdown-item" href="postar.jsp">Nova postagem</a></li>
             <li><a class="dropdown-item" href="removerPostagem.jsp">Remover postagem</a></li>
-            <li><a class="dropdown-item" href="alterarPostagem.jsp">Alterar postagem</a></li>
       </ul>
       <%
         		}
@@ -86,6 +85,7 @@
 			ResultSet r = p.executeQuery();
 			
 			while (r.next()) {
+				if (session.getAttribute("administrador") != null && (int) session.getAttribute("administrador") == 1) { 
 				
 		%>
 			<form action="alterar.jsp" style="text-align: center;" class="formulario">
@@ -105,6 +105,22 @@
 			Deixe seu comentário<br>
 			
 			<%
+				}
+				else {
+					
+			%>
+			
+			<div class="mb-3">
+				<h1><% out.print(r.getString(2)); %></h1>
+			</div>
+			<div class="mb-3">
+				<% out.print(r.getString(3)); %>
+			</div>
+			Deixe seu comentário<br>
+			
+			<%		
+				}
+				
 				String usuario = (String) session.getAttribute("usuario");
 				if (usuario == null) {
 					
