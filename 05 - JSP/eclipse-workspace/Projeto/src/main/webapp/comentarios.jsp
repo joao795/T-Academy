@@ -105,9 +105,9 @@
 			%>
 			
 			<form action="aprovarComentario.jsp" style="text-align: center; padding: 20px;">
-			<div class="mb-3">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
-			</div>
+			
+				<input type="hidden" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+			
 			<div class="mb-3">
 				<input type="submit" class="btn btn-success btn-sm" value="Aprovar">
 			</div>	
@@ -119,9 +119,9 @@
 			
 			</form>
 			<form action="removerComentario.jsp" style="text-align: center; padding: 20px;">
-				<div class="mb-3">
-					<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
-				</div>
+				
+					<input type="hidden" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				
 				<div class="mb-3">
 					<input type="submit" class="btn btn-danger btn-sm" value="Remover">
 				</div>

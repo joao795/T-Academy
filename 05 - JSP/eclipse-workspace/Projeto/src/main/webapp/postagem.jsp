@@ -90,7 +90,7 @@
 		%>
 			<form action="alterar.jsp" style="text-align: center;" class="formulario">
 			<div class="mb-3">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<input type="hidden" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 			</div>
 			<div class="mb-3">
 				<input type="text" name="novoTitulo" value="<% out.print(r.getString(2)); %>" required maxlength="20">
@@ -162,7 +162,7 @@
 		%>
 			
 				<form action="comentar.jsp" style="text-align: center;" class="formulario">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly><br><br>
+				<input type="hidden" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly><br><br>
 		<div class="mb-3">
 		<label for="comentario">Seu comentário:</label>
 			</div>

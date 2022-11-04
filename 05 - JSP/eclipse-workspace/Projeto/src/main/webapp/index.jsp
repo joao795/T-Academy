@@ -93,7 +93,7 @@
 
 	<form action="postagem.jsp" style="text-align: center; padding: 20px;">
 			<div class="mb-3">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
+				<input type="hidden" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 			</div>
 			<div class="mb-3">
 				<h1><% out.print(r.getString(2)); %></h1>
