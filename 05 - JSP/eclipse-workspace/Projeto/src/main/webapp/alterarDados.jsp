@@ -11,27 +11,24 @@
 <body>
 	<%
 		String usuario = (String) session.getAttribute("usuario");
+
+		String novoUsuario = request.getParameter("nomeUsuario");
+		String novaSenha = request.getParameter("senhaUsuario");
 	
-		if (usuario != null) {
-			String novoUsuario = request.getParameter("nomeUsuario");
-			String novaSenha = request.getParameter("senhaUsuario");
+		Conexao c = new Conexao();
 		
-			Conexao c = new Conexao();
-			
-			if (novoUsuario != null && !novoUsuario.isEmpty()
-				&& novaSenha != null && !novaSenha.isEmpty()) {	
-				String sql = "update usuario set nome = ?, senha = ? where nome like ?";
-				
-				PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
-				
-				p.setString(1, novoUsuario);
-				p.setString(2, novaSenha);
-				p.setString(3, (String) session.getAttribute("usuario"));
-				
-				p.execute();
-						
-			}
-		}
+		String sql = "update usuario set nome = ?, senha = ? where nome like ?";
+		
+		PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
+		
+		p.setString(1, novoUsuario);
+		p.setString(2, novaSenha);
+		p.setString(3, (String) session.getAttribute("usuario"));
+		
+		p.execute();
+	
+		//request.getSession().removeAttribute("usuario");
+		request.getSession().setAttribute("usuario", usuario);
 		
 		response.sendRedirect("index.jsp");
 		

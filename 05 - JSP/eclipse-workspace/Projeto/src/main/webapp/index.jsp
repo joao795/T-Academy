@@ -71,14 +71,6 @@
   </div>
 </nav>
 	<div style="text-align: right; padding: 20px;">
-		<% 
-			if ((String) session.getAttribute("usuario") != null) {
-				out.print("Olá, " + (String)session.getAttribute("usuario") + "."); 
-			}	
-			else {
-				out.println("");
-			}
-		%>
 	</div>
 
 	<%

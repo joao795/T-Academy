@@ -12,16 +12,18 @@
 	<%
 		String nomeUsuario = request.getParameter("nomeUsuario");
 		String senhaUsuario = request.getParameter("senhaUsuario");
-	
+		String emailUsuario = request.getParameter("email");
+		
 		Conexao c = new Conexao();
 		
 	
-			String sql = "insert into usuario values(null, ?, ?, 0, 0)";
+			String sql = "insert into usuario values(null, ?, ?, ?, 0, 0)";
 			
 			PreparedStatement p = c.efetuarConexao().prepareStatement(sql);
 			
 			p.setString(1, nomeUsuario);
 			p.setString(2, senhaUsuario);
+			p.setString(3, emailUsuario);
 			
 			p.execute();
 					

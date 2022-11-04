@@ -77,12 +77,16 @@
 
 	<form action="alterarDados.jsp" class="formulario">
 	<div class="mb-3">
-		<label for="nomeUsuario">Novo nome de usuario:</label>
-		<input type="text" name="nomeUsuario">
+		<label for="nomeUsuario">Novo nome de usuário:</label>
+		<input type="text" name="nomeUsuario" maxlength="20" required>
+	</div>
+	<div class="mb-3">
+		<label for="email">Novo E-mail:</label>
+		<input type="email" name="email" maxlength="20" required>
 	</div>
 	<div class="mb-3">
 		<label for="senhaUsuario">Nova senha:</label>
-		<input type="password" name="senhaUsuario">
+		<input type="password" name="senhaUsuario" maxlength="20" required>
 	</div>
 	<div class="mb-3">
 		<input type="submit" class="btn btn-warning" value="Alterar">

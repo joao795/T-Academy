@@ -73,11 +73,15 @@
 	<form action="cadastrar.jsp" class="formulario">
 	<div class="mb-3">
 		<label for="nomeUsuario">Escolha um nome de usuário:</label>
-		<input type="text" name="nomeUsuario" required>
+		<input type="text" name="nomeUsuario" required maxlength="20">
+	</div>
+	<div class="mb-3">
+		<label for="email">Digite seu E-mail:</label>
+		<input type="email" name="email" required maxlength="20">
 	</div>
 	<div class="mb-3">
 		<label for="senhaUsuario">Crie uma senha:</label>
-		<input type="password" name="senhaUsuario" required>
+		<input type="password" name="senhaUsuario" required maxlength="20">
 	</div>
 	<div class="mb-3">
 		<input type="submit" class="btn btn-primary" value="Cadastrar">

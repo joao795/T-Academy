@@ -25,14 +25,15 @@ drop table comentario;
 create table usuario(
     codigo int primary key auto_increment,
     nome varchar(20),
+    email varchar(20),
     senha varchar(20),
     banido int,
     administrador int
 );
 
-insert into usuario values(null, "joao", "123", 0, 1);
-insert into usuario values(null, "brena", "123", 0, 0);
-insert into usuario values(null, "matheus", "123", 0, 0);
+insert into usuario values(null, "joao", "joao@gmail.com", "123", 0, 1);
+insert into usuario values(null, "brena", "brena@gmail.com", "123", 0, 0);
+insert into usuario values(null, "matheus", "matheus@gmail.com", "123", 0, 0);
 
 select * from usuario;
 drop table usuario;
