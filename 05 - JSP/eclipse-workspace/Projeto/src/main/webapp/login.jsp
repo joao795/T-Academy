@@ -75,6 +75,8 @@
 	<div class="mb-3">
 		<label for="usuario">Usuario:</label>
 		<input type="text" name="usuario">
+	</div>
+	<div class="mb-3">
 		<label for="senha">Senha:</label>
 		<input type="password" name="senha">
 	</div>
@@ -84,8 +86,12 @@
 	</form>
 	
 	<form action="cadastro.jsp" style="text-align: center; padding: 20px;">
-		Não tem uma conta? Crie uma clicando no botão abaixo:<br>
-		<input type="submit" class="btn btn-primary btn-sm" value="Criar conta">
+		<div class="mb-3">
+			Não tem uma conta? Crie uma clicando no botão abaixo:
+		</div>
+		<div>
+			<input type="submit" class="btn btn-primary btn-sm" value="Criar conta">
+		</div>
 	</form>
 	
 	<%

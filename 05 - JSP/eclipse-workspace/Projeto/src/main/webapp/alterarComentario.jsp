@@ -11,7 +11,7 @@
 <body>
 	<%
 		String conteudo = request.getParameter("comentario");
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		int codigo = Integer.parseInt(request.getParameter("codigoComentario"));
 		
 		Conexao c = new Conexao();
 		

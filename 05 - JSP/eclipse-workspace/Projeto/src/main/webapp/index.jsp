@@ -74,7 +74,7 @@
 	<div style="text-align: right; padding: 20px;">
 		<% 
 			if ((String) session.getAttribute("usuario") != null) {
-				out.print("Ola, " + (String)session.getAttribute("usuario")); 
+				out.print("Olá, " + (String)session.getAttribute("usuario") + "."); 
 			}	
 			else {
 				out.println("");
@@ -98,7 +98,7 @@
 			</div>
 			<div class="mb-3">
 				<h1><% out.print(r.getString(2)); %></h1>
-				<% out.print(r.getString(3).substring(0, 2) + "..."); %>
+				<% out.print(r.getString(3).substring(0, 10) + "..."); %>
 			</div>
 			<div class="mb-3">
 				<input type="submit" class="btn btn-primary btn-sm" value="Ver mais">

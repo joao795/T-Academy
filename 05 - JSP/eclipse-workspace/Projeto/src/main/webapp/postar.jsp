@@ -77,11 +77,11 @@
 
 	<form action="cadastrarPostagem.jsp" style="text-align: center;" class="formulario">
 		<div class="mb-3">
-			<label for="nomePostagem">Titulo da postagem:</label>
+			<label for="nomePostagem">Título da postagem:</label>
 			<input type="text" name="nomePostagem" class="input-group mb-3" maxlength="20" minlength="1">
 		</div>
 		<div class="mb-3">
-			<label for="conteudoPostagem">Conteudo da postagem:</label>
+			<label for="conteudoPostagem">Conteúdo da postagem:</label>
 			<textarea name="conteudoPostagem" rows="10" cols="10" class="input-group mb-3" maxlength="255" minlength="10"></textarea>
 		</div>
 		<div class="mb-3">

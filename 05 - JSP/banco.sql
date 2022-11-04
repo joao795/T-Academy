@@ -19,6 +19,7 @@ create table comentario(
     aprovado int
 );
 
+select * from comentario;
 drop table comentario;
 
 create table usuario(

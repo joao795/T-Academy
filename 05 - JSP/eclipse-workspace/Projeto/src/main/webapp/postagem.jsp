@@ -88,12 +88,21 @@
 			while (r.next()) {
 				
 		%>
-			
-			<div style="text-align: center;">
-				<h1><% out.print(r.getString(2)); %></h1><br>
-				<% out.print(r.getString(3)); %>
+			<form action="alterar.jsp" style="text-align: center;" class="formulario">
+			<div class="mb-3">
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 			</div>
-			Deixe seu comentario<br>
+			<div class="mb-3">
+				<input type="text" name="novoTitulo" value="<% out.print(r.getString(2)); %>">
+			</div>
+			<div class="mb-3">
+				<textarea name="novoConteudo" rows="5" cols="5" class="input-group mb-3" maxlength="255" minlength="5"><% out.print(r.getString(3)); %></textarea>
+			</div>
+			<div class="mb-3">
+				<input type="submit" class="btn btn-warning btn-sm" value="Alterar">
+			</div>
+			</form>
+			Deixe seu comentário<br>
 			
 			<%
 				String usuario = (String) session.getAttribute("usuario");
@@ -101,13 +110,33 @@
 					
 			%>
 			
-			<%out.print("Para realizar comentários é necessário ter uma conta, clique");%> 
-		<button onclick="location.href='login.jsp'">aqui</button>
-		<%out.print("para fazer o login ou criar uma conta");%>
+			<%out.print("Para deixar comentários é necessário ter uma conta. Clique");%> 
+		<a href="location.href='login.jsp'">aqui</a>
+		<%out.print("para fazer login ou criar uma conta.");%>
 		
 		<%
+		Conexao cc = new Conexao();
+		//int codigoc = Integer.parseInt(request.getParameter("codigo"));
+		
+		String sqlc = "select * from comentario where postagem = ? and aprovado = 1";
+		//Statement sc = cc.efetuarConexao().createStatement();
+		PreparedStatement pc = cc.efetuarConexao().prepareStatement(sqlc);
+		
+		pc.setInt(1, codigo);
+		ResultSet rc = pc.executeQuery();
+		
+		while (rc.next()) {
+			
+	%>
+		
+		<br>
+		<% out.print(rc.getString(2)); %>:<br>
+		<% out.print(rc.getString(3)); %><br><br>
+		
+		<%
+				}	
 				}
-				else {	
+				else {
 					int banido = (int) session.getAttribute("banido");
 					if (banido == 1) {
 						out.print("Você foi banido e não pode mais deixar comentários >:(");
@@ -117,11 +146,13 @@
 			
 			<div>				
 				<form action="comentar.jsp" style="text-align: center;" class="formulario">
-				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly><br><br>
+				<input type="text" name="codigo" value="<% out.print(r.getInt(1)); %>" readonly>
 		<div class="mb-3">
 			<label for="comentario">Seu comentário:</label>
+			</div>
+			<div class="mb-3">
 			<input type="text" name="usuario" readonly value="<% out.print((String) session.getAttribute("usuario")); %>"><br><br>
-			<textarea name="comentario" rows="10" cols="10" class="input-group mb-3"></textarea>
+			<textarea name="comentario" rows="10" cols="10" class="input-group mb-3" maxlength="255" minlength="5"></textarea>
 		</div>
 		<div class="mb-3">
 			<input type="submit" value="Postar" class="btn btn-primary">
@@ -145,6 +176,7 @@
 			ResultSet rc = pc.executeQuery();
 			
 			while (rc.next()) {
+				if ((int) session.getAttribute("administrador") == 0) {
 				
 		%>
 			
@@ -154,8 +186,26 @@
 			
 		<%
 				}
+				else {
+					
+		%>
+					<div class="mb-3">
+						<% out.print(rc.getString(2)); %>:
+					</div>
+				<form action="alterarComentario.jsp" style="text-align: center;" class="formulario">
+				<div class="mb-3">
+					<input type="text" name="codigoComentario" value="<% out.print(rc.getInt(1)); %>" readonly>
+				</div>
+				<div class="mb-3">
+					<textarea name="comentario" rows="5" cols="5" class="input-group mb-3" maxlength="255" minlength="5"><% out.print(rc.getString(3)); %></textarea>
+				<input type="submit" class="btn btn-warning btn-sm" value="Alterar">
+				</div>
+				</form>
+	<%
+				}
 			}
 		}
+	}
 		%>
 </body>
 </html>
