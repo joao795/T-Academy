@@ -63,6 +63,9 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 		if ((String)session.getAttribute("usuario") == null) {
 	%>

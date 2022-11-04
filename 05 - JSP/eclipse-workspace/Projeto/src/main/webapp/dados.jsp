@@ -63,7 +63,13 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
+            
+        
+		if (session.getAttribute("banido") != null) {
 		int banido = (int) session.getAttribute("banido");
 		if (banido == 0) {
 	%>
@@ -83,10 +89,16 @@
 	</form>
 	
 	<%
+			}
+			else {
+				out.print("Você foi banido e não pode alterar seus dados >:(");
+			}
 		}
+		
 		else {
-			out.print("Você foi banido e não pode alterar seus dados >:(");
+			out.print("Você precisa estar em uma sessão para alterar seus dados :(");
 		}
+     
 	%>
 </body>
 </html>

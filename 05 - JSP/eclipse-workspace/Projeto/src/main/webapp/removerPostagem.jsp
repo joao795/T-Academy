@@ -66,11 +66,16 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 		String usuario = (String) session.getAttribute("usuario");
 	
-		if (usuario.equals("admin")) {	
-	
+		if (session.getAttribute("administrador") != null) {	
+			int admin = (int) session.getAttribute("administrador");
+			if (admin == 1) {
+			
 		Conexao c = new Conexao();
 		String sql = "select * from postagem";
 		Statement s = c.efetuarConexao().createStatement();
@@ -92,7 +97,10 @@
 
 	<% 
 		}
-		
+			}
+			else {
+				out.print("Você precisa ser o administrador para remover postagens :(");
+			}
 		}
 		else {
 			out.print("Você precisa ser o administrador para remover postagens :(");

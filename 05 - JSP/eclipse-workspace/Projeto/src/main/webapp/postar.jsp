@@ -62,10 +62,15 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 		String usuario = (String) session.getAttribute("usuario");
 	
-		if (usuario.equals("admin")) {
+		if (session.getAttribute("administrador") != null) {
+		int admin = (int) session.getAttribute("administrador");
+		if (admin == 1) {
 	%>
 
 	<form action="cadastrarPostagem.jsp" style="text-align: center;" class="formulario">
@@ -84,9 +89,14 @@
 	
 	<%
 		}
+		else {
+			out.print("Você precisa ser o administrador para fazer postagens :(");
+		}
+	}
 	else {
 		out.print("Você precisa ser o administrador para fazer postagens :(");
 	}
+
 	%>
 	
 	<link rel="stylesheet" href="estilos.css">

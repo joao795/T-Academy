@@ -10,8 +10,9 @@
 </head>
 <body>
 	<%
-		int admin = (int) session.getAttribute("administrador");
-		if (admin == 1) {
+	if (session.getAttribute("administrador") != null) {
+    	int admin = (int) session.getAttribute("administrador");
+        if (admin == 1) {
 			String titulo = request.getParameter("nomePostagem");
 			String conteudo = request.getParameter("conteudoPostagem");
 			
@@ -34,6 +35,7 @@
 		else {
 			out.print("Você precisa ser o administrador para fazer postagens :(");
 		}
+	}
 			
 	%>
 </body>

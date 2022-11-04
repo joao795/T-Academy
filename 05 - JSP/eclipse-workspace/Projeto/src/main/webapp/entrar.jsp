@@ -75,7 +75,7 @@
 									
 									session.setAttribute("usuario", usuario);
 									session.setAttribute("administrador", 0);
-									session.setAttribute("banido", 1);
+									session.setAttribute("banido", 0);
 								}
 							}
 							

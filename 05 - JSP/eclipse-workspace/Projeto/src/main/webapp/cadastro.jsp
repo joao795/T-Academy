@@ -63,6 +63,9 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 		if ((String)session.getAttribute("usuario") == null) {
 	%>
@@ -81,10 +84,12 @@
 	</form>
 	
 	<%
-		}
-		else {
-			out.print("Você está logado. Para criar uma nova conta, primeiro desconecte-se.");
-		}
+			}
+			else {
+				out.print("Você está em uma sessão. Para criar uma nova conta, primeiro desconecte-se.");
+			}
+		
+		
 	%>
 </body>
 </html>

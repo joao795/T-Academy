@@ -66,6 +66,9 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 			Conexao c = new Conexao();
 	

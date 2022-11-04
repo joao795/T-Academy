@@ -51,10 +51,10 @@
         <li class="nav-item">
           <a class="nav-link" href="sair.jsp">Sair</a>
         </li>
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Administrador
           </a>
-          <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="usuarios.jsp">Usuarios</a></li>
             <li><a class="dropdown-item" href="comentarios.jsp">Comentarios</a></li>
           </ul>
@@ -66,8 +66,13 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
 			String usuario = (String) session.getAttribute("usuario");
+	
+			if (session.getAttribute("administrador") != null) {
 			int admin = (int) session.getAttribute("administrador");
 	
 			if (admin == 1) {
@@ -127,14 +132,20 @@
 	</form>
 			
 		
-		<%
+		<%		
+								
 						}
-					}
+					}	
 				}
 			}
 			else {
 				out.print("Você precisa ser o administrador para acessar esta página :(");
 			}
+		}
+		else {
+			out.print("Você precisa ser o administrador para acessar esta página :(");
+		}
+    
 		%>
 </body>
 </html>

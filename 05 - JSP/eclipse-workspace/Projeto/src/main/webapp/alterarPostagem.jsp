@@ -66,9 +66,13 @@
     </div>
   </div>
 </nav>
+    </div>
+  </div>
+</nav>
 	<%
-		int admin = (int) session.getAttribute("administrador");
-		if (admin == 1) {
+	if (session.getAttribute("administrador") != null) {
+    	int admin = (int) session.getAttribute("administrador");
+        if (admin == 1) {
 	%>
 	<form action="alterar.jsp" class="formulario">
 		<label for="codigo">Codigo da postagem:</label><br>
@@ -86,6 +90,11 @@
 		else {
 			out.print("Você precisa ser o administrador para alterar postagens :(");
 		}
+	}
+
+    else {
+    	out.print("Você precisa ser o administrador para alterar postagens :(");
+    }
 	%>
 </body>
 </html>
