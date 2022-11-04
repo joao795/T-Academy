@@ -125,6 +125,7 @@
 			</div>
 			<div class="mb-3">
 				<h1><% out.print(r.getString(2)); %></h1>
+				<% out.print(r.getString(3)); %>
 			</div>
 			<div class="mb-3">
 				<input type="submit" class="btn btn-danger btn-sm" value="Banir">
