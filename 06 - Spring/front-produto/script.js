@@ -1,34 +1,33 @@
+// vetor de produtos
 let vetor = [];
 
-window.onload = function() {
+window.onload = function(){
     obterProdutos();
-
-    listarProdutos();
 }
 
-function obterProdutos() {
+function obterProdutos(){
     fetch("http://localhost:8080")
     .then(retorno => retorno.json())
     .then(produtos => vetor = produtos)
     .then(() => listarProdutos());
 }
 
-function listarProdutos() {
+function listarProdutos(){
     let tabela = document.getElementById("tabela");
+    tabela.innerHTML="";
 
-    tabela.innerHTML = "";
-
-    for (let i = 0; i < vetor.length; i++) {
+    for(let i=0; i<vetor.length;i++){
         let linha = tabela.insertRow(-1);
 
-        let colunaCodigo = linha.insertCell(0);
-        let colunaNome = linha.insertCell(1);
-        let colunaValor = linha.insertCell(2);
+        let colunaCodigo = linha.insertCell(0); 
+        let colunaNome = linha.insertCell(1); 
+        let colunaValor = linha.insertCell(2); 
         let colunaSelecionar = linha.insertCell(3);
 
-        colunaCodigo.innerText = vetor[i].codigo;
+        colunaCodigo.innerText = vetor[i].codigo; 
         colunaNome.innerText = vetor[i].nome;
-        colunaValor.innerText = vetor[i].valor;
-        colunaSelecionar.innerHTML = "<button class='btn btn-success'>Selecionar</button>"
+        colunaValor.innerText = vetor[i].valor; 
+        colunaSelecionar.innerHTML = `<button class="btn btn-primary    ">Selecionar</button>`; 
+
     }
 }

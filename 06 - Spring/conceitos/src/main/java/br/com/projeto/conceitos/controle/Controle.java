@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controle {
     
     @GetMapping("")
-    public String inicio() {
-        return "Hello, world!";
+    public String inicio(){
+        return "Hello World!!";
     }
 
     @GetMapping("/sobre")
-    public String sobre() {
+    public String sobre(){
         return "Sobre o projeto...";
     }
 
     @GetMapping("/contato")
-    public String contato() {
-        return "Fale conosco";
+    public String contato(){
+        return "fale conosco...";
     }
+
 
 }
