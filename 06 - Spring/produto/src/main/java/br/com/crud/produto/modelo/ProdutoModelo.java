@@ -7,9 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity                     //Diz que tem q criar uma tabela
-@Table (name = "produtos")  //serve pra trocar o nome da tabela no banco.
-                            //Se n por nada ficaria "produto-modelo"
-
+@Table (name = "produtos")  //serve pra trocar o nome da tabela no banco. Se n por nada ficaria "produto-modelo"
 public class ProdutoModelo {
     @Id                     //declara pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment

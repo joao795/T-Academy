@@ -16,7 +16,7 @@ function listarProdutos(){
     let tabela = document.getElementById("tabela");
     tabela.innerHTML="";
 
-    for(let i=0; i<vetor.length;i++){
+    for(let i = 0; i < vetor.length; i++){
         let linha = tabela.insertRow(-1);
 
         let colunaCodigo = linha.insertCell(0); 
@@ -27,7 +27,36 @@ function listarProdutos(){
         colunaCodigo.innerText = vetor[i].codigo; 
         colunaNome.innerText = vetor[i].nome;
         colunaValor.innerText = vetor[i].valor; 
-        colunaSelecionar.innerHTML = `<button class="btn btn-primary    ">Selecionar</button>`; 
+        colunaSelecionar.innerHTML = `<button class="btn btn-primary">Selecionar</button>`; 
 
+    }
+}
+
+function cadastrar() {
+    let nome = document.getElementById("nome").value;
+    let valor = parseInt(document.getElementById("valor").value);    
+
+    if (nome.length < 5) {
+        alert("O nome do produto deve possuir pelo menos 5 caracteres.");
+    }
+    else if (valor <= 0 || isNaN(valor)) {
+        alert("Informe um valor válido.");
+    }
+    else {
+        let obj = {
+            "nome": nome,
+            "valor": valor
+        }
+
+        fetch("http://localhost:8080", {
+            method: "POST",
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        })
+        .then(retorno => retorno.json())
+        .then(retorno_convertido => console.log(retorno_convertido))
     }
 }
