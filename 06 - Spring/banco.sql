@@ -1,2 +1,2 @@
-create database spring;
+create database projeto;
 
