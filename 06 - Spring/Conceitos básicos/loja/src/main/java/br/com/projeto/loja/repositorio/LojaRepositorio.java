@@ -9,5 +9,4 @@ import br.com.projeto.loja.modelo.LojaModelo;
  */
 public interface LojaRepositorio extends CrudRepository<LojaModelo, Long>{
 
-    
 }
