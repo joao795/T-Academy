@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projeto.modelo.ArtistaModelo;
+import br.com.projeto.modelo.MusicaModelo;
 import br.com.projeto.repositorio.ArtistaRepositorio;
 
 @RestController
@@ -36,14 +37,25 @@ public class ArtistaControle {
         return acao.save(obj);
     }
 
-    @GetMapping("{codigo}")
+    @GetMapping("/{codigo}")
     public Optional<ArtistaModelo> pesquisar(@PathVariable long codigo) {
         return acao.findById(codigo);
     }
 
-    @DeleteMapping("{codigo}")
+    @DeleteMapping("/{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
+    }
+
+    @PutMapping("/{codigo}")
+    public ArtistaModelo alterar(@PathVariable long codigo, @RequestBody MusicaModelo obj) {
+        ArtistaModelo am = acao.findByCodigo(codigo);
+
+        am.getMusicas().add(obj);
+
+        acao.save(am);
+
+        return am;
     }
 
 }

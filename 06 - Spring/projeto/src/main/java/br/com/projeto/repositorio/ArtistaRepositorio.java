@@ -7,5 +7,5 @@ import br.com.projeto.modelo.ArtistaModelo;
 
 @Repository
 public interface ArtistaRepositorio extends CrudRepository<ArtistaModelo, Long> {
-    
+    ArtistaModelo findByCodigo(long codigo);
 }

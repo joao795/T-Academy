@@ -1,13 +1,12 @@
 package br.com.projeto.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,13 +19,8 @@ public class MusicaModelo {
     private String nome;
     private String link;
 
-    @ManyToMany
-    @JoinTable(
-        name = "tabela_auxiliar",
-        joinColumns = {@JoinColumn(name = "codigo_musica", referencedColumnName = "codigo")},
-        inverseJoinColumns = {@JoinColumn(name = "codigo_playlist", referencedColumnName = "codigo")}
-    )
-    private List<PlaylistModelo> playlists;
+    @ManyToMany(mappedBy = "musicas")
+    private List<PlaylistModelo> playlists = new ArrayList<>();
 
     public long getCodigo() {
         return codigo;
@@ -50,6 +44,14 @@ public class MusicaModelo {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public List<PlaylistModelo> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<PlaylistModelo> playlists) {
+        this.playlists = playlists;
     }
     
 }
