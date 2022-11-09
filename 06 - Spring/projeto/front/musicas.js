@@ -42,7 +42,7 @@ function listarMusicas() {
     }
 }
 
-function cadastrarMusica() {
+async function cadastrarMusica() {
     let nome = document.getElementById("nomeMusica").value;  
     let artista = parseInt(document.getElementById("artistaMusica").value);  
     let link = document.getElementById("linkMusica").value;  
@@ -64,26 +64,25 @@ function cadastrarMusica() {
             "link": link
         }
 
-        fetch("http://localhost:8080/musicas", {
-        method: "POST",
-        headers: {
+        let retorno = await fetch("http://localhost:8080/musicas", {
+            method: "POST",
+            headers: {
             "accept": "application/json",
             "content-type": "application/json"
-        },
-        body: JSON.stringify(obj)
+            },
+            body: JSON.stringify(obj)
         })
-        .then(retorno => retorno.json())
-        .then(retorno_convertido => {
-            musicas.push(retorno_convertido);
-            listarMusicas();
-        })
+
+        let retorno_convertido = await retorno.json();
+        musicas.push(retorno_convertido);
+        listarMusicas();
 
         let musica = {
             "codigo": codigo,
             "nome": nome
         }
 
-        fetch(`http://localhost:8080/artistas/${artista}`, {
+        retorno = await fetch(`http://localhost:8080/artistas/${artista}`, {
             method: "PUT",
             headers: {
                 "accept": "application/json",
@@ -91,12 +90,9 @@ function cadastrarMusica() {
             },
             body: JSON.stringify(musica)
         })
-        .then(retorno => retorno.json())
-        .then(retorno_convertido => {
 
-            console.log(retorno_convertido);
-
-        })
+        retorno_convertido = await retorno.json();
+        console.log(retorno_convertido);
         
     }
 
