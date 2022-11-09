@@ -82,6 +82,7 @@ function cadastrarMusica() {
             "nome": nome
         }
 
+        alert("teste");
         fetch(`http://localhost.com:8080/artistas/${artista}`, {
             method: "PUT",
             headers: {
@@ -90,13 +91,12 @@ function cadastrarMusica() {
             },
             body: JSON.stringify(musica)
         })
-        /*
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
-            musicas.push(retorno_convertido);
-            listarMusicas();
+
+            console.log(retorno_convertido);
+
         })
-        */
     }
 }
 
