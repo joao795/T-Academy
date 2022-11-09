@@ -1,5 +1,6 @@
 //vetor de Musicas
 let musicas = [];
+let musicasNomes = [];
 
 window.onload = function() {
     obterMusicas();
@@ -64,12 +65,12 @@ function cadastrarMusica() {
         }
 
         fetch("http://localhost:8080/musicas", {
-            method: "POST",
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(obj)
+        method: "POST",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(obj)
         })
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
@@ -82,8 +83,7 @@ function cadastrarMusica() {
             "nome": nome
         }
 
-        alert("teste");
-        fetch(`http://localhost.com:8080/artistas/${artista}`, {
+        fetch(`http://localhost:8080/artistas/${artista}`, {
             method: "PUT",
             headers: {
                 "accept": "application/json",
@@ -97,7 +97,11 @@ function cadastrarMusica() {
             console.log(retorno_convertido);
 
         })
+        
     }
+
+    formularioPadrao();
+
 }
 
 function selecionarMusica(codigo) {
@@ -115,6 +119,7 @@ function selecionarMusica(codigo) {
         //preencher os inputs
         document.getElementById("codigoMusica").value = retorno_convertido.codigo;
         document.getElementById("nomeMusica").value = retorno_convertido.nome;
+        document.getElementById("linkMusica").value = retorno_convertido.link
 
     });
 }
@@ -138,6 +143,8 @@ function removerMusica() {
 
         //atualizar a tabela
         listarMusicas();
+
+        formularioPadrao();
     })
 }
 
@@ -186,6 +193,26 @@ function alterarMusica() {
             //limpar o formulário
             formularioPadrao();
         })
+
+        let musica = {
+            "codigo": codigo,
+            "nome": nome
+        }
+
+        fetch(`http://localhost:8080/artistas/${artista}`, {
+            method: "PUT",
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(musica)
+        })
+        .then(retorno => retorno.json())
+        .then(retorno_convertido => {
+
+            console.log(retorno_convertido);
+
+        })
     }
 }
 
@@ -194,6 +221,8 @@ function formularioPadrao() {
     //limpar os inputs
     document.getElementById("codigoMusica").value = "";
     document.getElementById("nomeMusica").value = "";
+    document.getElementById("artistaMusica").value = "";
+    document.getElementById("linkMusica").value = "";
 
     //visibilidade dos botões
     document.getElementById("btnCadastrarMusica").style.display = "inline-block";
