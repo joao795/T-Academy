@@ -5,8 +5,15 @@ window.onload = function() {
     obterArtistas();
 }
 
-function obterArtistas(){
+function obterArtistas() {
     fetch("http://localhost:8080/artistas")
+    .then(retorno => retorno.json())
+    .then(artistas => vetor = artistas)
+    .then(() => listarArtistas());
+}
+
+function pesquisarArtista(termo) {
+    fetch(`http://localhost:8080/pesquisarArtista/${termo}`)
     .then(retorno => retorno.json())
     .then(artistas => vetor = artistas)
     .then(() => listarArtistas());
@@ -25,7 +32,7 @@ function listarArtistas(){
 
         colunaCodigo.innerText = vetor[i].codigo; 
         colunaNome.innerText = vetor[i].nome;
-        colunaSelecionar.innerHTML = `<button onclick="selecionar(${vetor[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
+        colunaSelecionar.innerHTML = `<button onclick="selecionarArtista(${vetor[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
 
     }
 }
@@ -57,7 +64,7 @@ function cadastrarArtista() {
     }
 }
 
-function selecionarArtistas(codigo) {
+function selecionarArtista(codigo) {
     fetch(`http://localhost:8080/artistas/${codigo}`)
     .then(retorno => retorno.json())
     .then(retorno_convertido => {
@@ -98,7 +105,7 @@ function removerArtista() {
     })
 }
 
-function alterar() {
+function alterarArtista() {
     let codigo = parseInt(document.getElementById("codigo").value);
     let nome = document.getElementById("nome").value;
 

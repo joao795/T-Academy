@@ -17,6 +17,11 @@
     <script src="script.js"></script>
 </head>
 <body>
+    <div class="mb-3">
+        <input type="text" placeholder="Pesquisar..." class="form-control" id="termo">
+        <input type="button" class="btn btn-primary" id="btnPesquisar" value="Pesquisar" onclick="pesquisarArtista(document.getElementById('termo').value)">
+    </div>
+
     <form action="">
         <input type="hidden" name="" id="codigo">
 

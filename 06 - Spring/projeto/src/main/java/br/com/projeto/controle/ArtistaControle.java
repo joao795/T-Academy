@@ -42,6 +42,11 @@ public class ArtistaControle {
         return acao.findById(codigo);
     }
 
+    @GetMapping("/pesquisarArtista/{termo}")
+    public Iterable<ArtistaModelo> nomeContem(@PathVariable String termo) {
+        return acao.findByNomeContaining(termo);
+    }
+
     @DeleteMapping("/{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
