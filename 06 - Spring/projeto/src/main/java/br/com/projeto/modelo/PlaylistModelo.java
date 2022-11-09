@@ -18,6 +18,7 @@ public class PlaylistModelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codigo;
+    private long nome;
 
     @ManyToMany
     @JoinTable(
@@ -41,5 +42,13 @@ public class PlaylistModelo {
 
     public void setMusicas(List<MusicaModelo> musicas) {
         this.musicas = musicas;
+    }
+
+    public long getNome() {
+        return nome;
+    }
+
+    public void setNome(long nome) {
+        this.nome = nome;
     }
 }

@@ -7,5 +7,5 @@ import br.com.projeto.modelo.MusicaModelo;
 
 @Repository
 public interface MusicaRepositorio extends CrudRepository<MusicaModelo, Long> {
-    
+    Iterable<MusicaModelo> findByNomeContaining(String termo);
 }

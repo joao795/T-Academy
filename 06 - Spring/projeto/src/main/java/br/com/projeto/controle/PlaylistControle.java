@@ -2,6 +2,7 @@ package br.com.projeto.controle;
 
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import br.com.projeto.modelo.PlaylistModelo;
 import br.com.projeto.repositorio.PlaylistRepositorio;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/playlists")
 public class PlaylistControle {
     private PlaylistRepositorio acao;
@@ -42,6 +44,11 @@ public class PlaylistControle {
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
+    }
+
+    @GetMapping("/pesquisarPlaylist/{termo}")
+    public Iterable<PlaylistModelo> nomeContem(@PathVariable String termo) {
+        return acao.findByNomeContaining(termo);
     }
 
 }

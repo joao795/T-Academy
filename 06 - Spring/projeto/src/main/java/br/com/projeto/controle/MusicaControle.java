@@ -3,6 +3,7 @@ package br.com.projeto.controle;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import br.com.projeto.modelo.MusicaModelo;
 import br.com.projeto.repositorio.MusicaRepositorio;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/musicas")
 public class MusicaControle {
     @Autowired
@@ -44,5 +46,10 @@ public class MusicaControle {
     @DeleteMapping("{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
+    }
+
+    @GetMapping("/pesquisar/{termo}")
+    public Iterable<MusicaModelo> nomeContem(@PathVariable String termo) {
+        return acao.findByNomeContaining(termo);
     }
 }

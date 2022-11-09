@@ -1,2 +1,2 @@
-drop database projeto;
+create database projeto;
 

@@ -1,5 +1,5 @@
-// vetor de artistas
-let vetor = [];
+//artistas de artistas
+let artistas = [];
 
 window.onload = function() {
     obterArtistas();
@@ -8,37 +8,30 @@ window.onload = function() {
 function obterArtistas() {
     fetch("http://localhost:8080/artistas")
     .then(retorno => retorno.json())
-    .then(artistas => vetor = artistas)
+    .then(Artistas => artistas = Artistas)
     .then(() => listarArtistas());
 }
 
-function pesquisarArtista(termo) {
-    fetch(`http://localhost:8080/pesquisarArtista/${termo}`)
-    .then(retorno => retorno.json())
-    .then(artistas => vetor = artistas)
-    .then(() => listarArtistas());
-}
-
-function listarArtistas(){
-    let tabela = document.getElementById("tabela");
+function listarArtistas() {
+    let tabela = document.getElementById("tabelaArtistas");
     tabela.innerHTML="";
 
-    for(let i = 0; i < vetor.length; i++){
+    for(let i = 0; i < artistas.length; i++){
         let linha = tabela.insertRow(-1);
 
         let colunaCodigo = linha.insertCell(0); 
         let colunaNome = linha.insertCell(1); 
         let colunaSelecionar = linha.insertCell(2);
 
-        colunaCodigo.innerText = vetor[i].codigo; 
-        colunaNome.innerText = vetor[i].nome;
-        colunaSelecionar.innerHTML = `<button onclick="selecionarArtista(${vetor[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
+        colunaCodigo.innerText = artistas[i].codigo; 
+        colunaNome.innerText = artistas[i].nome;
+        colunaSelecionar.innerHTML = `<button onclick="selecionarArtista(${artistas[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
 
     }
 }
 
 function cadastrarArtista() {
-    let nome = document.getElementById("nome").value;  
+    let nome = document.getElementById("nomeArtista").value;  
 
     if (nome.length == 0) {
         alert("O nome do artista deve possuir pelo menos um caracter.");
@@ -58,7 +51,7 @@ function cadastrarArtista() {
         })
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
-            vetor.push(retorno_convertido);
+            artistas.push(retorno_convertido);
             listarArtistas();
         })
     }
@@ -70,15 +63,15 @@ function selecionarArtista(codigo) {
     .then(retorno_convertido => {
 
         //desabilitar o botão de cadastro
-        document.getElementById("btnCadastrar").style.display = "none";
+        document.getElementById("btnCadastrarArtista").style.display = "none";
 
         //exibir os botões de alteração e exclusão
-        document.getElementById("btnAlterar").style.display = "inline-block";
-        document.getElementById("btnRemover").style.display = "inline-block";
+        document.getElementById("btnAlterarArtista").style.display = "inline-block";
+        document.getElementById("btnRemoverArtista").style.display = "inline-block";
 
         //preencher os inputs
-        document.getElementById("codigo").value = retorno_convertido.codigo;
-        document.getElementById("nome").value = retorno_convertido.nome;
+        document.getElementById("codigoArtista").value = retorno_convertido.codigo;
+        document.getElementById("nomeArtista").value = retorno_convertido.nome;
 
     });
 }
@@ -86,28 +79,30 @@ function selecionarArtista(codigo) {
 function removerArtista() {
 
     //obter o código que está no input hidden
-    let codigo = parseInt(document.getElementById("codigo").value);
+    let codigo = parseInt(document.getElementById("codigoArtista").value);
 
     //requisição 
     fetch(`http://localhost:8080/artistas/${codigo}`, {method: "DELETE"})
     .then(() => {
 
-        //obter a posição no vetor referente ao produto que será removido
-        let posicaoVetor = vetor.findIndex(objLinha => 
+        //obter a posição no artistas referente ao produto que será removido
+        let posicaoArtistas = artistas.findIndex(objLinha => 
             {return objLinha.codigo == codigo
         });
 
-        //remover produto do vetor
-        vetor.splice(posicaoVetor, 1);
+        //remover produto do artistas
+        artistas.splice(posicaoArtistas, 1);
 
         //atualizar a tabela
         listarArtistas();
+
+        formularioPadrao();
     })
 }
 
 function alterarArtista() {
-    let codigo = parseInt(document.getElementById("codigo").value);
-    let nome = document.getElementById("nome").value;
+    let codigo = parseInt(document.getElementById("codigoArtista").value);
+    let nome = document.getElementById("nomeArtista").value;
 
     if (nome.length == 0) {
         alert("O nome do artista deve possuir pelo menos um caracter.");
@@ -128,12 +123,12 @@ function alterarArtista() {
         })
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
-            let posicaoVetor = vetor.findIndex(objLinha => {
+            let posicaoArtistas = artistas.findIndex(objLinha => {
                 return objLinha.codigo == codigo;
             })
 
-            //alterar o produto no vetor
-            vetor[posicaoVetor] = retorno_convertido;
+            //alterar o produto no artistas
+            artistas[posicaoArtistas] = retorno_convertido;
 
             //atualizar a tabela
             listarArtistas();
@@ -147,11 +142,18 @@ function alterarArtista() {
 //função para limpar os campos e modificar a visibilidade dos botões
 function formularioPadrao() {
     //limpar os inputs
-    document.getElementById("codigo").value = "";
-    document.getElementById("nome").value = "";
+    document.getElementById("codigoArtista").value = "";
+    document.getElementById("nomeArtista").value = "";
 
     //visibilidade dos botões
-    document.getElementById("btnCadastrar").style.display = "inline-block";
-    document.getElementById("btnAlterar").style.display = "none";
-    document.getElementById("btnRemover").style.display = "none";
+    document.getElementById("btnCadastrarArtista").style.display = "inline-block";
+    document.getElementById("btnAlterarArtista").style.display = "none";
+    document.getElementById("btnRemoverArtista").style.display = "none";
+}
+
+function pesquisarArtista(termo) {
+    fetch(`http://localhost:8080/artistas/pesquisar/${termo}`)
+    .then(retorno => retorno.json())
+    .then(listaArtistas => artistas = listaArtistas)
+    .then(() => listarArtistas());
 }

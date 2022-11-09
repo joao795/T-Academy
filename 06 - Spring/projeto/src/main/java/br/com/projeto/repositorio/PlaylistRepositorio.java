@@ -7,5 +7,5 @@ import br.com.projeto.modelo.PlaylistModelo;
 
 @Repository
 public interface PlaylistRepositorio extends CrudRepository<PlaylistModelo, Long> {
-    
+    Iterable<PlaylistModelo> findByNomeContaining(String termo);
 }

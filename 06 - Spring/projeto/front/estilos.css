@@ -8,6 +8,12 @@ form input, div input {
     margin-top: 15px;
 }
 
-#btnAlterar, #btnRemover {
+#btnAlterarArtista, #btnRemoverArtista,
+#btnAlterarMusica, #btnRemoverMusica {
     display: none;
+}
+
+h1, a {
+    text-align: center;
+    padding: 20px;
 }
