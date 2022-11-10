@@ -25,22 +25,20 @@ function listarPlaylists() {
 
         colunaCodigo.innerText = playlists[i].codigo; 
         colunaNome.innerText = playlists[i].nome;
-        colunaSelecionar.innerHTML = `<button onclick="selecionarplaylist(${playlists[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
+        colunaSelecionar.innerHTML = `<button onclick="selecionarPlaylist(${playlists[i].codigo})" class="btn btn-primary">Selecionar</button>`; 
 
     }
 }
 
 function cadastrarPlaylist() {
-    let nome = document.getElementById("nomePlaylist").value; 
-    let codigo = document.getElementById("codigoPlaylist").value; 
+    let nome = document.getElementById("nomePlaylist").value;
 
     if (nome.length == 0) {
         alert("O nome do playlist deve possuir pelo menos um caracter.");
     }
     else {
         let obj = {
-            "nome": nome,
-            "codigo": codigo
+            "nome": nome
         }
 
         fetch("http://localhost:8080/playlists", {
@@ -133,7 +131,7 @@ function alterarPlaylist() {
             playlists[posicaoplaylists] = retorno_convertido;
 
             //atualizar a tabela
-            listarplaylists();
+            listarPlaylists();
 
             //limpar o formulário
             formularioPadrao();

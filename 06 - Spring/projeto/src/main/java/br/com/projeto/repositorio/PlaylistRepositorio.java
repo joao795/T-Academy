@@ -1,11 +1,15 @@
 package br.com.projeto.repositorio;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import br.com.projeto.modelo.PlaylistModelo;
 
-@Repository
 public interface PlaylistRepositorio extends CrudRepository<PlaylistModelo, Long> {
-    Iterable<PlaylistModelo> findByNomeContaining(String termo);
+    PlaylistModelo findByCodigo(long codigo);
+
+    Iterable<PlaylistModelo> findByNomeContaining(String nome);
+
+    @Query(value = "DELETE FROM playlist_musica WHERE musica_codigo = ? AND playlist_codigo = ?", nativeQuery = true)
+    void removerMusicaPlaylist(long codigoMusica, long codigoPlaylist);
 }

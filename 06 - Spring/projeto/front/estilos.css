@@ -8,8 +8,7 @@ form input, div input {
     margin-top: 15px;
 }
 
-#btnAlterarArtista, #btnRemoverArtista,
-#btnAlterarMusica, #btnRemoverMusica {
+.btn-warning, .btn-danger {
     display: none;
 }
 
