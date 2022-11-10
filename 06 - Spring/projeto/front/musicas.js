@@ -42,18 +42,12 @@ function listarMusicas() {
     }
 }
 
-async function cadastrarMusica() {
-    let nome = document.getElementById("nomeMusica").value;  
-    let artista = parseInt(document.getElementById("artistaMusica").value);  
+function cadastrarMusica() {
+    let nome = document.getElementById("nomeMusica").value;     
     let link = document.getElementById("linkMusica").value;  
-
-    let codigo = parseInt(document.getElementById("codigoMusica").value);
 
     if (nome.length == 0) {
         alert("O nome da música deve possuir pelo menos um caracter.");
-    }
-    else if (artista <= 0 || isNaN(artista)) {
-        alert("Informe um código de artista válido.");
     }
     else if (link.length == 0) {
         alert("O link deve possuir pelo menos um caracter.");
@@ -64,40 +58,50 @@ async function cadastrarMusica() {
             "link": link
         }
 
-        let retorno = await fetch("http://localhost:8080/musicas", {
-            method: "POST",
-            headers: {
+        fetch("http://localhost:8080/musicas", {
+        method: "POST",
+        headers: {
             "accept": "application/json",
             "content-type": "application/json"
-            },
-            body: JSON.stringify(obj)
+        },
+        body: JSON.stringify(obj)
+        })
+        .then(retorno => retorno.json())
+        .then(retorno_convertido => {
+            musicas.push(retorno_convertido);
+            listarMusicas();
         })
 
-        let retorno_convertido = await retorno.json();
-        musicas.push(retorno_convertido);
-        listarMusicas();
-
-        let musica = {
-            "codigo": codigo,
-            "nome": nome
-        }
-
-        retorno = await fetch(`http://localhost:8080/artistas/${artista}`, {
-            method: "PUT",
-            headers: {
-                "accept": "application/json",
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(musica)
-        })
-
-        retorno_convertido = await retorno.json();
-        console.log(retorno_convertido);
-        
     }
 
     formularioPadrao();
 
+}
+
+function adicionarMusica() {
+    let codigo = parseInt(document.getElementById("codigoMusica").value);
+    let nome = document.getElementById("nomeMusica").value;
+    let artista = parseInt(document.getElementById("artistaMusica").value);
+
+    let musica = {
+        "codigo": codigo,
+        "nome": nome
+    }
+
+    fetch(`http://localhost:8080/artistas/${artista}`, {
+        method: "PUT",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(musica)
+    })
+    .then(retorno => retorno.json())
+    .then(retorno_convertido => {
+        console.log(retorno_convertido);
+    })
+
+    formularioPadrao();
 }
 
 function selecionarMusica(codigo) {

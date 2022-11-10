@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotifeio</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <script src="playlists.js"></script>
+</head>
+<body>
+
+    <h1>Gerenciar Playlists</h1>
+
+    <div>
+        <div class="mb-3">
+            <input type="text" placeholder="Pesquisar playlists..." class="form-control" id="termoPlaylist">
+            <input type="button" class="btn btn-primary" id="btnPesquisarPlaylists" value="Pesquisar" onclick="pesquisarPlaylist(document.getElementById('termoPlaylist').value)">
+        </div>
+    
+        <form action="">
+            <input type="hidden" name="" id="codigoPlaylist">
+    
+            <input type="text" id="nomePlaylist" placeholder="Nome da playlist..." class="form-control">
+    
+            <input type="button" value="Cadastrar" id="btnCadastrarPlaylist" class="btn btn-success" onclick="cadastrarPlaylist()">
+            <input type="button" value="Alterar" id="btnAlterarPlaylist" class="btn btn-warning" onclick="alterarPlaylist()">
+            <input type="button" value="Remover" id="btnRemoverPlaylist" class="btn btn-danger" onclick="removerPlaylist()">
+        </form>
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Selecionar</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaPlaylists"></tbody>
+        </table>
+    </div>
+
+</body>
+</html>

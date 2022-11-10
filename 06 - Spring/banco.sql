@@ -1,2 +1,2 @@
-create database projeto;
+create database projeto_final;
 

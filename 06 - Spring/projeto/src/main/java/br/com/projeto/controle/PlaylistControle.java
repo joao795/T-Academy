@@ -2,6 +2,7 @@ package br.com.projeto.controle;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import br.com.projeto.repositorio.PlaylistRepositorio;
 @CrossOrigin(origins = "*")
 @RequestMapping("/playlists")
 public class PlaylistControle {
+    @Autowired
     private PlaylistRepositorio acao;
 
     @PostMapping("")
