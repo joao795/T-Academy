@@ -30,10 +30,17 @@
             <input type="hidden" name="" id="codigoPlaylist">
     
             <input type="text" id="nomePlaylist" placeholder="Nome da playlist..." class="form-control">
+        
+            <input type="number" id="codigoMusica" placeholder="Código da música..." class="form-control">
+            <input type="button" value="Inserir" id="btnInserirMusica" class="btn btn-success" onclick="inserirMusica()">
+            <input type="button" value="Retirar" id="btnRetirarMusica" class="btn btn-danger" onclick="retirarMusica()">
     
-            <input type="button" value="Cadastrar" id="btnCadastrarPlaylist" class="btn btn-success" onclick="cadastrarPlaylist()">
-            <input type="button" value="Alterar" id="btnAlterarPlaylist" class="btn btn-warning" onclick="alterarPlaylist()">
-            <input type="button" value="Remover" id="btnRemoverPlaylist" class="btn btn-danger" onclick="removerPlaylist()">
+            <div>
+                <input type="button" value="Cadastrar" id="btnCadastrarPlaylist" class="btn btn-success" onclick="cadastrarPlaylist()">
+                <input type="button" value="Alterar" id="btnAlterarPlaylist" class="btn btn-warning" onclick="alterarPlaylist()">
+                <input type="button" value="Remover" id="btnRemoverPlaylist" class="btn btn-danger" onclick="removerPlaylist()">
+            </div>
+            
         </form>
     
         <table class="table">

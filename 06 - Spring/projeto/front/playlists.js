@@ -155,5 +155,41 @@ function pesquisarPlaylist(termo) {
     fetch(`http://localhost:8080/playlists/pesquisar/${termo}`)
     .then(retorno => retorno.json())
     .then(listaplaylists => playlists = listaplaylists)
-    .then(() => listarplaylists());
+    .then(() => listarPlaylists());
+}
+
+async function inserirMusica() {
+    let codigoMusica = document.getElementById("codigoMusica").value;
+    let codigoPlaylist = document.getElementById("codigoPlaylist").value;
+    let nomeMusica;
+
+    let retorno = await fetch(`http://localhost:8080/musicas/${codigoMusica}`)
+    let retorno_convertido = await retorno.json();
+
+    nomeMusica = retorno_convertido.codigo;
+
+    /*
+    .then(retorno => retorno.json())
+    .then(retorno_convertido => {
+        nomeMusica = retorno_convertido.nome;
+    });
+    */
+
+    var obj = {
+        "codigo": codigo,
+        "nome": nomeMusica
+    }
+
+    fetch(`http://localhost:8080/playlists/${codigoPlaylist}`, {
+        method: "PUT",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    })
+    .then(retorno => retorno.json())
+    .then(retorno_convertido => {
+        console.log(retorno_convertido);
+    })
 }
