@@ -176,7 +176,7 @@ async function inserirMusica() {
     */
 
     var obj = {
-        "codigo": codigo,
+        "codigo": codigoMusica,
         "nome": nomeMusica
     }
 

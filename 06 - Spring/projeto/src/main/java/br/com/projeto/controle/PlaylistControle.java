@@ -16,8 +16,8 @@ import br.com.projeto.modelo.PlaylistModelo;
 import br.com.projeto.repositorio.PlaylistRepositorio;
 
 @RestController
-@RequestMapping("/playlists")
 @CrossOrigin(origins = "*")
+@RequestMapping("/playlists")
 public class PlaylistControle {
     
     @Autowired

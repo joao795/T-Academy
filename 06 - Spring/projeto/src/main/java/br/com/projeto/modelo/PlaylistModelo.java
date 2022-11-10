@@ -30,7 +30,7 @@ public class PlaylistModelo {
 
     public long getCodigo() {
         return this.codigo;
-    }
+    } 
 
     public void setCodigo(long codigo) {
         this.codigo = codigo;
