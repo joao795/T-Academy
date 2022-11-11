@@ -158,24 +158,35 @@ function pesquisarPlaylist(termo) {
     .then(() => listarPlaylists());
 }
 
-async function inserirMusica() {
+function buscarMusica() {
     let codigoMusica = document.getElementById("codigoMusica").value;
     let codigoPlaylist = document.getElementById("codigoPlaylist").value;
-    let nomeMusica;
 
-    let retorno = await fetch(`http://localhost:8080/musicas/${codigoMusica}`)
-    let retorno_convertido = await retorno.json();
-
-    nomeMusica = retorno_convertido.codigo;
-
-    /*
+    fetch(`http://localhost:8080/musicas/${codigoMusica}`, {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        },
+        //body: JSON.stringify(obj)
+    })
     .then(retorno => retorno.json())
     .then(retorno_convertido => {
-        nomeMusica = retorno_convertido.nome;
-    });
-    */
+        console.log(retorno_convertido);
 
-    var obj = {
+        console.log(retorno_convertido.nome);
+
+        document.getElementById("nomeMusica").value = retorno_convertido.nome;
+    })
+
+}
+
+function inserirMusica() {
+    let codigoMusica = document.getElementById("codigoMusica").value;
+    let nomeMusica = document.getElementById("nomeMusica").value;
+    let codigoPlaylist = document.getElementById("codigoPlaylist").value;
+
+    let obj = {
         "codigo": codigoMusica,
         "nome": nomeMusica
     }
