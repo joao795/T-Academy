@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../.."
+		},
+		{
+			"name": "documentacao",
+			"path": "../../../../../../../../Swagger/documentacao"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
