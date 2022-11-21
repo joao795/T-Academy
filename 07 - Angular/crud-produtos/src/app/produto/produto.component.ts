@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Produto } from '../modelo/Produto';
+import { ProdutoService } from '../servicos/produto.service';
 
 @Component({
   selector: 'app-produto',
@@ -8,6 +9,9 @@ import { Produto } from '../modelo/Produto';
   styleUrls: ['./produto.component.css']
 })
 export class ProdutoComponent {
+  //construtor
+  constructor(private servico:ProdutoService) { }
+
   //vetor de produtos
   vetor:Produto[] = [];
 
@@ -19,6 +23,11 @@ export class ProdutoComponent {
     nome: new FormControl(),
     valor: new FormControl()
   });
+
+  //inicialização (executa após carregar todo o componente)
+  ngOnInit() {
+    this.selecionar();
+  }
 
   //função para retornar os valores contidos no formulário
   testarFormulario():void {
@@ -43,6 +52,18 @@ export class ProdutoComponent {
     //console
     console.log(this.vetor);
 
+  }
+
+  //remover um produto
+  remover(posicao:number):void {
+    //excluir produto através da posição do vetor
+    this.vetor.splice(posicao, 1);
+  }
+
+  //obter todos os produtos que estão na API
+  selecionar():void {
+    this.servico.selecionar()
+    .subscribe(retorno => this.vetor = retorno);
   }
 
 }
