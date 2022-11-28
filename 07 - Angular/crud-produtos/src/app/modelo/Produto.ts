@@ -2,8 +2,10 @@
 export class Produto {
 
     //atributos
+    id:number = 0;
     nome:string = '';
-    valor:number = 0;
-    id?:number = 0;
+    departamento:string = '';
+    endereco:string = '';
+    email:string = '';
 
 }

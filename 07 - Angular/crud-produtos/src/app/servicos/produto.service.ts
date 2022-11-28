@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
 import { Produto } from '../modelo/Produto';
 
 @Injectable({
@@ -7,12 +8,22 @@ import { Produto } from '../modelo/Produto';
 })
 export class ProdutoService {
 
-  //construtor
+  // Construtor
   constructor(private http:HttpClient) { }
 
-  //selecionar todos os produtos da API
-  selecionar() {
-    return this.http.get<Produto[]>('http://localhost:3000/produtos');
+  // Selecionar todos os produtos da API
+  selecionar(){
+    return this.http.get<Produto[]>('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro');
+  }
+
+  // Remover produto através do ID
+  remover(id:number){
+    return this.http.delete('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro/'+id);
+  }
+
+  // Cadastrar um produto
+  alterar(id:number, p:Produto){
+    return this.http.put<Produto>('https://bu.furb.br/mcardoso/progWeb/apiRestAval.php/cadastro/' + id, p);
   }
 
 }

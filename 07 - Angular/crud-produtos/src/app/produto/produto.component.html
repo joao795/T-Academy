@@ -1,8 +1,11 @@
 <!-- formulário -->
 <form [formGroup]="formulario">
-    <input type="text" name="" id="" class="form-control" placeholder="Produto" formControlName="nome">
-    <input type="number" name="" id="" class="form-control" placeholder="Valor" formControlName="valor">
-    <input type="button" value="Cadastrar" name="" id="" class="btn btn-primary" (click)="cadastrar()">
+    <input type="number" name="" id="id" class="form-control" formControlName="id" placeholder="ID do funcionário a alterar">
+    <input type="text" name="" id="nome" class="form-control" placeholder="Nome" formControlName="nome">
+    <input type="text" name="" id="departamento" class="form-control" placeholder="Departamento" formControlName="departamento">
+    <input type="text" name="" id="endereco" class="form-control" placeholder="Endereço" formControlName="endereco">
+    <input type="text" name="" id="email" class="form-control" placeholder="E-mail" formControlName="email">
+    <input type="button" value="Enviar" name="" id="" class="btn btn-success" (click)="alterar()">
 </form>
 
 <!-- tabela -->
@@ -11,14 +14,18 @@
         <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Valor</th>
+            <th>Departamento</th>
+            <th>Endereço</th>
+            <th>E-mail</th>
             <th>Remover</th>
         </tr>
     </thead>
     <tr *ngFor="let v of vetor; index as i">
-        <td>{{i + 1}}</td>
-        <td>{{v.nome}}</td>
-        <td>{{v.valor}}</td>
+            <td>{{i + 1}}</td>
+            <td>{{v.nome}}</td>
+            <td>{{v.departamento}}</td>
+            <td>{{v.endereco}}</td>
+            <td>{{v.email}}</td>
         <td><button class="btn btn-danger" (click)="remover(v.id)">Remover</button></td>
     </tr>
 </table>

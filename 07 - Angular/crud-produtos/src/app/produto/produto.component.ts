@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Produto } from '../modelo/Produto';
 import { ProdutoService } from '../servicos/produto.service';
@@ -20,8 +20,11 @@ export class ProdutoComponent {
 
   //formulário
   formulario = new FormGroup({
+    id: new FormControl(),
     nome: new FormControl(),
-    valor: new FormControl()
+    departamento: new FormControl(),
+    endereco: new FormControl(),
+    email: new FormControl()
   });
 
   //inicialização (executa após carregar todo o componente)
@@ -35,35 +38,77 @@ export class ProdutoComponent {
   }
 
   //cadastrar um produto
-  cadastrar():void {
+  alterar():void {
     //objeto do tipo produto
     let p = new Produto();
 
-    //passr os dados do formulário para o objeto p
+    //passar os dados do formulário para o objeto p
+    p.id = this.formulario.value.id;
     p.nome = this.formulario.value.nome;
-    p.valor = this.formulario.value.valor;
+    p.departamento = this.formulario.value.departamento;
+    p.endereco = this.formulario.value.endereco;
+    p.email = this.formulario.value.email;
 
-    //cadastrar o produto no vetor
-    this.vetor.push(p);
+    console.log(p);
 
-    //limpar campos de formulário
-    this.formulario.reset();
+    //executar o ser(vi?)ço
+    this.servico.alterar(p.id, p)
+    .subscribe(retorno => {
+      this.formulario.reset();
+    })
 
     //console
-    console.log(this.vetor);
+    //console.log(this.vetor);
 
   }
 
   //remover um produto
-  remover(posicao:number):void {
-    //excluir produto através da posição do vetor
-    this.vetor.splice(posicao, 1);
+  remover(id:number):void {
+
+    alert('Você quer mesmo excluir esse funcionário? (●´⌓`●)');
+
+    //remover produto no back-end
+    this.servico.remover(id)
+    .subscribe(() => {
+      //posicao do vetor em que está determinado ID
+      let pesquisaId = this.vetor.findIndex(obj => {return obj.id === id});
+
+      //remover produto do vetor
+      this.vetor.splice(pesquisaId, 1);
+
+    });
+
   }
 
   //obter todos os produtos que estão na API
   selecionar():void {
     this.servico.selecionar()
-    .subscribe(retorno => this.vetor = retorno);
+    .subscribe({
+      next: retorno => this.vetor = retorno
+      //error: () => alert('Falha ao listar')
+    });
   }
+
+  // selecionarFuncionario(id:number):void {
+  //   const nome = <HTMLInputElement>document.getElementById("nome");
+
+  //   let obj = {
+  //     'id': 0,
+  //     'nome': 'João',
+  //     'departamento': 'R&D',
+  //     'endereco': 'R. Conrado Balsini, 77',
+  //     'email': 'jsouza8816@gmail.com'
+  //   }
+
+  //   for (let i = 0; i < this.vetor.length; i++) {
+  //     if (this.vetor[i].id === id) {
+  //       obj = this.vetor[i];
+  //     }
+  //   }
+
+    
+    
+
+  // }
 
 }
